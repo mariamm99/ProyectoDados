@@ -19,6 +19,13 @@ public class EjercicioDados {
     this.d3 = d3;
     this.jugador=jugador;
     
+    
+    /**
+     * pa darle valor a los dados
+     * 
+     *  
+     * **/
+    
   }
 
 
@@ -27,21 +34,23 @@ public class EjercicioDados {
    * Generamos los get y los setters pa dados. En los set tendremes que realizar una
    * creación de números aleatorios entre 1-6 que será el resultado podemos crear
    * un solo set??????
+   * 
+   * Hago set separados por si quiere cambiar tiradas indicar que seters llamar
    */
   public int getD1() {
     return d1;
   }
 
   public void setD1(int d1) {
-    this.d1 = d1;
+    this.d1 = (int) (Math.random()*6);
   }
 
   public int getD2() {
     return d2;
   }
 
-  public void setD2(int d2) {
-    this.d2 = d2;
+  public void setD2() {
+    this.d2 = (int) (Math.random() * 6 );
   }
 
   public int getD3() {
@@ -50,7 +59,7 @@ public class EjercicioDados {
   }
 
   public void setD3(int d3) {
-    this.d3 = d3;
+    this.d3 = (int) (Math.random() * 6 );
   }
 
   public boolean casillaVacia() {
@@ -80,7 +89,19 @@ public class EjercicioDados {
     /**
      * Escribir en el array y mostrarlo tras cada modificación y fin de tirada de un jugador.
      * */
-   return array[this.jugador][14];
+    
+    /**
+     * no se donde crear el array
+     */
+    int[][] tablero = new int[this.jugador][14];
+    for (int i = 0; i < this.jugador; i++) {
+      for (int j = 0; j < 14; j++) {
+        System.out.println(tablero[i][j] + "/t");
+      }
+      
+    }
+    
+   return tablero;
  
   }
 
@@ -116,6 +137,7 @@ public class EjercicioDados {
     }
     
   }
+  }
     String Trio() {
       if  (d1 == d2 && d1 == d3  ) {
         if (this.casillaVacia(Risco)) {
@@ -141,7 +163,7 @@ public class EjercicioDados {
      * La puntuación por números puede ser la misma función e indicarle el número que es.
      * */
     
-     int numero(int n) {
+     int numero(int n){
       int puntos=0;
       if (d1==n) {
         puntos+=n;
