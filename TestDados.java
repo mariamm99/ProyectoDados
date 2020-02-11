@@ -22,7 +22,7 @@ public class TestDados {
     for (int i = 1; i <= nJugadores; i++) {
       String nombreTirada ="tirada" + i;
       System.out.println(nombreTirada);
-      EjercicioDados {nombreTirada} = new EjercicioDados(i, nJugadores);
+      EjercicioDados tiradai = new EjercicioDados(i, nJugadores);
       System.out.println();
     }
 
