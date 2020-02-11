@@ -62,6 +62,9 @@ public class EjercicioDados {
   public void setD3(int d3) {
     this.d3 = (int) (Math.random() * 6);
   }
+  
+  /**get y set de jugador creo q inecesarios. decididme!!!
+   * */
 
   public int getJugador() {
     return jugador;
@@ -97,7 +100,7 @@ public class EjercicioDados {
 
   }
 
-  public boolean casillaVacia(int casilla, int puntos) {
+  public boolean casillaVacia(int casilla) {
 
     return false;
   }
@@ -166,7 +169,7 @@ public class EjercicioDados {
         puntos+=n;
       }
       
-      if (this.casillaVacia()) {
+      if (this.casillaVacia(n)) {
         this.tablero( n, n);
         return "Casilla Risco completada "+n + " ptos";
       } else {
