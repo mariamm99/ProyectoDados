@@ -13,20 +13,23 @@ public class EjercicioDados {
    * si es el 1º el 2º jugador
    */
   int jugador;
-
-  public EjercicioDados(int d1, int d2, int d3, int jugador) {
-    this.d1 = d1;
-    this.d2 = d2;
-    this.d3 = d3;
+  int nJugadores;
+  
+  /**no paso los dados pq se generan solos*/
+  
+  public EjercicioDados(int jugador, int nJugadores) {
+    setD1(d1);
+    setD2(d2);
+    setD3(d3);
+    this.nJugadores= nJugadores;
     this.jugador = jugador;
 
     /**
      * pa darle valor a los dados
-     * 
-     * 
      **/
 
   }
+
 
   /**
    * Generamos los get y los setters pa dados. En los set tendremes que realizar
@@ -47,7 +50,7 @@ public class EjercicioDados {
     return d2;
   }
 
-  public void setD2() {
+  public void setD2(int d2) {
     this.d2 = (int) (Math.random() * 6);
   }
 
@@ -82,7 +85,7 @@ public class EjercicioDados {
     /**
      * no se donde crear el array
      */
-    int[][] tablero = new int[totalJugador][14];
+    int[][] tablero = new int[this.nJugadores][14];
     for (int i = 0; i < this.jugador; i++) {
       for (int j = 0; j < 14; j++) {
         System.out.println(tablero[i][j] + "/t");
