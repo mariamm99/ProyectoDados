@@ -1,85 +1,20 @@
 package ejercicioDados;
 
-public class EjercicioDados {
+public class Partida {
 
-  /**
-   * Creamos las clases según los distintos tipos de puntuaciones de los dados
-   **/
-
-  int d1;
-  int d2;
-  int d3;
-  /**
-   * si es el 1º el 2º jugador
-   */
-  int jugador;
-  int nJugadores;
+  // Atributos
+  int ronda;
   
-  /**no paso los dados pq se generan solos*/
+  public Partida(int jugador, int nJugadores) {
+    
   
-  public EjercicioDados(int jugador, int nJugadores) {
-    setD1(d1);
-    setD2(d2);
-    setD3(d3);
-    this.nJugadores= nJugadores;
-    this.jugador = jugador;
-
-    /**
-     * pa darle valor a los dados
-     **/
-
-  }
-
-
-  /**
-   * Generamos los get y los setters pa dados. En los set tendremes que realizar
-   * una creación de números aleatorios entre 1-6 que será el resultado podemos
-   * crear
-   * 
-   * Hago set separados por si quiere cambiar tiradas indicar que seters llamar
-   */
-  public int getD1() {
-    return d1;
-  }
-
-  public void setD1(int d1) {
-    this.d1 = (int) (Math.random() * 6);
-  }
-
-  public int getD2() {
-    return d2;
-  }
-
-  public void setD2(int d2) {
-    this.d2 = (int) (Math.random() * 6);
-  }
-
-  public int getD3() {
-
-    return d3;
-  }
-
-  public void setD3(int d3) {
-    this.d3 = (int) (Math.random() * 6);
-  }
-  
-  /**get y set de jugador creo q inecesarios. decididme!!!
-   * */
-
-  public int getJugador() {
-    return jugador;
-  }
-
-  public void setJugador(int jugador) {
-    this.jugador = jugador;
-  }
-
   /**
    * Para crear la tabla de valores un array?? sería bidimensional jugador1 |
    * Jugador2 | .... Risco Trece ... ptos Totales
    */
 
-  public int[][] tablero(int casilla, int puntos) {
+  // TODO: Comento esto temporalmente, en sustitución de muestraTablero
+  // public int[][] tablero(int casilla, int puntos) {
     /**
      * Escribir en el array y mostrarlo tras cada modificación y fin de tirada de un
      * jugador.
@@ -88,7 +23,7 @@ public class EjercicioDados {
     /**
      * no se donde crear el array
      */
-    int[][] tablero = new int[this.nJugadores][14];
+    /* int[][] tablero = new int[this.nJugadores][14];
     for (int i = 0; i < this.jugador; i++) {
       for (int j = 0; j < 14; j++) {
         System.out.println(tablero[i][j] + "/t");
@@ -98,11 +33,23 @@ public class EjercicioDados {
 
     return tablero;
 
+  } */
+  
+  public void muestraTablero() {
+    
   }
-
+  
   public boolean casillaVacia(int casilla) {
-
-    return false;
+    /* Habría que crear el jugador, temporalmente ¿j1?*/
+    /* Cada juego, pasa como argumento de casillaVacia el número de posición 
+     * en el ArrayList, por ejemplo, en un Risco, se llamaría a 
+     * casillaVacia(0)
+     */
+    if (j1.p.get(casilla)==0) { // En el ArrayList, 0 es vacío, es decir, sin puntos
+      return true;
+    } else {
+      return false;
+    }
   }
 
   public String Risco() {
