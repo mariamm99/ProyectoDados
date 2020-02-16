@@ -1,25 +1,37 @@
-package ejercicioDados;
+package juegoRisco;
+
+import java.util.Scanner;
 
 public class Partida {
 
+  // Scanner
+  Scanner s = new Scanner(System.in);
+  
   // Atributos
   int ronda;
+  int nJugadores;
   
-  public Partida(int jugador, int nJugadores) {
+  public Partida(int nJugadores) {
+    this.nJugadores = nJugadores;
+    this.ronda = 1;
+  }
+  
+  // Método para crear Jugadores (Jugador). Habrá que llamarlo en main.
+  public void creaJugador() {
+    String nombretmp;
+    for (int i=0;i<=this.nJugadores;i++) {
+      System.out.println("Introduce el nombre del jugador " + i + ": ");
+      nombretmp = s.next();
+      // TODO: Ahora como hacemos que cree tantas instancias de jugador según nJugadores?
+    }
+  }
     
-  
-  /**
-   * Para crear la tabla de valores un array?? sería bidimensional jugador1 |
-   * Jugador2 | .... Risco Trece ... ptos Totales
-   */
-
-  // TODO: Comento esto temporalmente, en sustitución de muestraTablero
+  // Comento esto temporalmente, en sustitución de muestraTablero
   // public int[][] tablero(int casilla, int puntos) {
     /**
      * Escribir en el array y mostrarlo tras cada modificación y fin de tirada de un
      * jugador.
      */
-
     /**
      * no se donde crear el array
      */
@@ -30,13 +42,18 @@ public class Partida {
       }
 
     }
-
     return tablero;
-
   } */
   
   public void muestraTablero() {
-    
+    String[] juegos = {" ", "Risco", "Trece", "Escalera mayor", "Escalera menor", "Escalera par", "Escalera impar", "Tres iguales", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "As", "Total"}
+    System.out.print();
+    for (int i=0;i<=juegos.length;i++) {
+      System.out.print(juegos[i] + "\t");
+      for (int j=0;j<=this.nJugadores;j++) {
+        System.out.println();
+      }
+    }
   }
   
   public boolean casillaVacia(int casilla) {
@@ -144,5 +161,5 @@ public class Partida {
        
      }
   
-
+  s.close();
 }
