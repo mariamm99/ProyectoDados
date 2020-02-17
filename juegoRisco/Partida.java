@@ -105,6 +105,13 @@ public class EjercicioDados {
     return false;
   }
 
+
+// METODOS DE COMPROBACION DE LAS DISTINTAS PUNTUACIONES DE LA PARTIDA 
+
+  /*
+  *   Metodo para comprobacion del Risco
+  */
+
   public String Risco() {
     if ((d1 == d2 || d1 == d3 || d2 == d3) && (d1 + d2 + d3 == 13)) {
       if (this.casillaVacia(Risco)) {
@@ -120,6 +127,10 @@ public class EjercicioDados {
 
   }
 
+  /*
+  *   Metodo para comprobacion del Trece
+  */
+
   public String Trece() {
     if (d1 + d2 + d3 != 13) {
       return "Esta conbinación de números no es un trece";
@@ -133,6 +144,96 @@ public class EjercicioDados {
 
     }
   }
+
+  /*
+  *   Metodo para comprobacion de la Escalera Mayor
+  */
+
+  public boolean EscaleraMayor() {
+    if (this.casillaVacia(casilla)){
+      for (int i = 4 ; i <= 6 ; i++){
+
+        if (d1 != i || d2 != i || d3 != i){
+
+          return false;
+
+        } 
+      }
+
+      return true;
+
+    }
+    }
+  }
+
+  /*
+  *   Metodo para comprobacion de la Escalera Menor
+  */
+
+  public boolean EscaleraMenor() {
+    if (this.casillaVacia(casilla)) {
+
+      for (int i = 1 ; i <= 3 ; i++){
+
+        if (d1 != i || d2 != i || d3 != i){
+
+          return false;
+
+        } 
+      }
+
+      return true;
+
+    }
+  }
+
+  /*
+  *   Metodo para comprobacion de la Escalera Par
+  */
+
+  public boolean EscaleraPar() {
+    if (this.casillaVacia(casilla)) {
+
+      for (int i = 1 ; i <= 5 ; i += 2){
+
+        if (d1 != i || d2 != i || d3 != i){
+
+          return false;
+
+        } 
+      }
+
+      return true;
+
+    }
+  }
+
+  /*
+  *   Metodo para comprobacion de la Escalera Impar
+  */
+
+  public boolean EscaleraImpar() {
+    if (this.casillaVacia(casilla)) {
+
+      for (int i = 2 ; i <= 6 ; i += 2){
+
+        if (d1 != i || d2 != i || d3 != i){
+
+          return false;
+
+        } 
+      }
+
+      return true;
+
+    }
+  }
+
+
+
+  /*
+  *   Metodo para comprobacion del Trece
+  */
 
   String Trio() {
     if (d1 == d2 && d1 == d3) {
@@ -149,15 +250,12 @@ public class EjercicioDados {
 
   }
 
-  /**
-   * ESCALERAS NO SE HACERLAS
-   */
 
-  /**
+    /**
      * La puntuación por números puede ser la misma función e indicarle el número que es.
      * */
     
-     String numero(int n){
+    String numero(int n){
       int puntos=0;
       if (d1==n) {
         puntos+=n;
