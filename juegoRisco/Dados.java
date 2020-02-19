@@ -1,4 +1,4 @@
-package ejercicioDados.juegoRisco;
+package ProyectoDados.juegoRisco;
 import java.util.Scanner;
 
 public class Dados {
@@ -78,7 +78,14 @@ public class Dados {
       }
 
     }
+    
 
+  }
+  
+  @Override
+  public String toString() {
+    // TODO Auto-generated method stub
+    return getD1()+" "+ getD2() +" "+ getD3();
   }
 
   public static void main(String[] args) {
@@ -86,7 +93,7 @@ public class Dados {
 
     Dados d1 = new Dados();
 
-    System.out.println(d1.getD1()+" "+ d1.getD2() +" "+ d1.getD3());
+    System.out.println(d1);
     
     System.out.println("indique cuantos dados vas a cambiar");
     int dadosCambiar= sc.nextInt();
