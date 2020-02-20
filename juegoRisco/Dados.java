@@ -43,9 +43,12 @@ public class Dados {
 
   void cambiarDados(int nDadosCambiar) {
 
-    if (nDadosCambiar > 3) {
-      System.out.println("solo puedes cambiar 3 dados");
-      nDadosCambiar = 3;
+    if (nDadosCambiar > 1) {
+      if (nDadosCambiar > 3) {
+
+        System.out.println("solo puedes cambiar 3 dados");
+        nDadosCambiar = 3;
+      }
 
       int dado;
       boolean cambiod1 = true;
@@ -76,20 +79,17 @@ public class Dados {
           --i;
         }
       }
+
     } else if (nDadosCambiar == 0) {
-      System.out.println();
+      System.out.println("continuemos con la partida.");
 
     }
-
+System.out.println("dados definitivos");
   }
 
   @Override
   public String toString() {
     return "dado 1: " + getD1() + " dado 2: " + getD2() + " dado 3: " + getD3();
-  }
-
-  public static void main(String[] args) {
-
   }
 
 }

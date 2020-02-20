@@ -73,7 +73,7 @@ public class Partida {
     }
   }
 
-  public boolean casillaVacia(int casilla) {
+  public static boolean casillaVacia(int casilla) {
     /* Habría que crear el jugador, temporalmente ¿j1? */
     /*
      * Cada juego, pasa como argumento de casillaVacia el número de posición en el
@@ -91,17 +91,17 @@ public class Partida {
    */
 
   public static String Risco(Dados dados) {
-    if (this.casillaVacia(0)) {
+    if (casillaVacia(0)) {
       if ((dados.getD1() == dados.getD2() || dados.getD1() == dados.getD3() || dados.getD2() == dados.getD3()) && (dados.getD1() + dados.getD2() +dados.getD3() == 13)) {
 
-        //this.tablero(0, 50);
+        //tablero(0, 50);
         return "Casilla Risco completada, 50 ptos";
       } else {
-        return "casilla ocupada";
+        return "Esta conbinación de números no es un risco";
       }
 
     } else {
-      return "Esta conbinación de números no es un risco";
+      return "casilla ocupada";
     }
 
   }
@@ -110,13 +110,13 @@ public class Partida {
    * Metodo para comprobacion del Trece
    */
 
-  public String Trece() {
-    if (this.casillaVacia(1)) {
-      if (dados + d2 + d3 != 13) {
+  public static String Trece(Dados dados) {
+    if (casillaVacia(1)) {
+      if (dados.getD1() + dados.getD2() +dados.getD3() == 13) {
         return "Esta conbinación de números no es un trece";
       } else {
 
-        this.tablero(1, 50);
+        tablero(1, 50);
         return "Casilla trece completada, 26 ptos";
       }
     } else {
@@ -270,4 +270,7 @@ public class Partida {
     }
   }
 
+
+  
+  
 }
