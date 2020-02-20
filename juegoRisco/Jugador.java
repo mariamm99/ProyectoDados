@@ -1,3 +1,4 @@
+package ProyectoDados.juegoRisco;
 import java.util.ArrayList;
 
 public class Jugador {
@@ -9,21 +10,20 @@ public class Jugador {
   // Constructor ///////
   public Jugador (String nombre) {
     this.nombre = nombre;
-    p.put(0); // 0 Risco Para añadir puntuación → p.add(0, puntuación);
-    p.put(0); // 1 Trece
-    p.put(0); // 2 Escalera mayor
-    p.put(0); // 3 Escalera menor
-    p.put(0); // 4 Escalera par
-    p.put(0); // 5 Escalera impar
-    p.put(0); // 6 Tres iguales
-    p.put(0); // 7 Seis
-    p.put(0); // 8 Cinco
-    p.put(0); // 9 Cuatro
-    p.put(0); // 10 Tres
-    p.put(0); // 11 Dos
-    p.put(0); // 12 As
+    p.add(null); // 0 Risco Para añadir puntuación → p.add(0, puntuación);
+    p.add(null); // 1 Trece
+    p.add(null); // 2 Escalera mayor
+    p.add(null); // 3 Escalera menor
+    p.add(null); // 4 Escalera par
+    p.add(null); // 5 Escalera impar
+    p.add(null); // 6 Tres iguales
+    p.add(null); // 7 Seis
+    p.add(null); // 8 Cinco
+    p.add(null); // 9 Cuatro
+    p.add(null); // 10 Tres
+    p.add(null); // 11 Dos
+    p.add(null); // 12 As
     // TODO: Calcular TOTAL en el tablero... O hacer método totalPtos()
-    this.p = p;
   }
 
   public String getNombre() {
@@ -43,7 +43,7 @@ public class Jugador {
   }
   
   public int totalPtos() {
-    int tmp; // Variable que almacena todos los puntos
+    int tmp = 0; // Variable que almacena todos los puntos
     for (int i: p) {
       tmp += i;
     }
