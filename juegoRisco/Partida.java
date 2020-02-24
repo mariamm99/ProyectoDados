@@ -1,9 +1,9 @@
 package ProyectoDados.juegoRisco;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Partida {
-
   // Scanner
   Scanner s = new Scanner(System.in);
 
@@ -11,28 +11,33 @@ public class Partida {
   int ronda;
   int nJugadores;
 
+  static ArrayList<Jugador> partida = new ArrayList<Jugador>();
+
+  static void crearJugadores(String nombre) {
+
+    Jugador jugador = new Jugador(nombre);
+    partida.add(jugador);
+  }
+
   public Partida(int nJugadores) {
     setnJugadores(nJugadores);
     this.ronda = 1;
   }
 
-  // Método para crear Jugadores (Jugador). Habrá que llamarlo en main.
-  public void creaJugador() {
-    String nombretmp;
-    for (int i = 0; i <= this.nJugadores; i++) {
-      System.out.println("Introduce el nombre del jugador " + i + ": ");
-      nombretmp = s.next();
-      // TODO: Ahora como hacemos que cree tantas instancias de jugador según
-      // nJugadores?
-    }
-  }
+// Método para crear Jugadores (Jugador). Habrá que llamarlo en main.
+//  public void creaJugador() {
+//    String nombretmp;
+//    for (int i = 0; i <= this.nJugadores; i++) {
+//      System.out.println("Introduce el nombre del jugador " + i + ": ");
+//      nombretmp = s.next();
+//      // TODO: Ahora como hacemos que cree tantas instancias de jugador según
+//      // nJugadores?
+//    }
+//  }
 
   // Comento esto temporalmente, en sustitución de muestraTablero
   // public int[][] tablero(int casilla, int puntos) {
-  /**
-   * Escribir en el array y mostrarlo tras cada modificación y fin de tirada de un
-   * jugador.
-   */
+
   public int getRonda() {
     return ronda;
   }
@@ -49,25 +54,13 @@ public class Partida {
     this.nJugadores = nJugadores;
   }
 
-  /**
-     * no se donde crear el array
-     */
-    /* int[][] tablero = new int[this.nJugadores][14];
-    for (int i = 0; i < this.jugador; i++) {
-      for (int j = 0; j < 14; j++) {
-        System.out.println(tablero[i][j] + "/t");
-      }
-
-    }
-    return tablero;
-  } */
-  
   public void muestraTablero() {
-    String[] juegos = {" ", "Risco", "Trece", "Escalera mayor", "Escalera menor", "Escalera par", "Escalera impar", "Tres iguales", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "As", "Total"}
-    System.out.print();
-    for (int i=0;i<=juegos.length;i++) {
+    String[] juegos = { " ", "Risco", "Trece", "Escalera mayor", "Escalera menor", "Escalera par", "Escalera impar",
+        "Tres iguales", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "As", "Total" };
+    System.out.println();
+    for (int i = 0; i <= juegos.length; i++) {
       System.out.print(juegos[i] + "\t");
-      for (int j=0;j<=this.nJugadores;j++) {
+      for (int j = 0; j <= this.nJugadores; j++) {
         System.out.println();
       }
     }
@@ -79,22 +72,24 @@ public class Partida {
      * Cada juego, pasa como argumento de casillaVacia el número de posición en el
      * ArrayList, por ejemplo, en un Risco, se llamaría a casillaVacia(0)
      */
-    if (j1.p.get(casilla) == 0) { // En el ArrayList, 0 es vacío, es decir, sin puntos
+    // partida[casilla]
+    if (0 == 0) { // En el ArrayList, 0 es vacío, es decir, sin puntos
       return true;
     } else {
       return false;
     }
   }
 
- /*
+  /*
    * Metodo para comprobacion del Risco
    */
 
   public static String Risco(Dados dados) {
     if (casillaVacia(0)) {
-      if ((dados.getD1() == dados.getD2() || dados.getD1() == dados.getD3() || dados.getD2() == dados.getD3()) && (dados.getD1() + dados.getD2() +dados.getD3() == 13)) {
+      if ((dados.getD1() == dados.getD2() || dados.getD1() == dados.getD3() || dados.getD2() == dados.getD3())
+          && (dados.getD1() + dados.getD2() + dados.getD3() == 13)) {
 
-        //tablero(0, 50);
+        // tablero(0, 50);
         return "Casilla Risco completada, 50 ptos";
       } else {
         return "Esta conbinación de números no es un risco";
@@ -112,11 +107,11 @@ public class Partida {
 
   public static String Trece(Dados dados) {
     if (casillaVacia(1)) {
-      if (dados.getD1() + dados.getD2() +dados.getD3() == 13) {
+      if (dados.getD1() + dados.getD2() + dados.getD3() == 13) {
         return "Esta conbinación de números no es un trece";
       } else {
 
-        tablero(1, 50);
+        // tablero(1, 50);
         return "Casilla trece completada, 26 ptos";
       }
     } else {
@@ -129,11 +124,11 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Mayor
    */
 
-  public boolean EscaleraMayor() {
-    if (this.casillaVacia(2)) {
+  public static boolean EscaleraMayor(Dados dados) {
+    if (casillaVacia(2)) {
       for (int i = 4; i <= 6; i++) {
 
-        if (dados != i || d2 != i || d3 != i) {
+        if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
           return false;
 
@@ -143,20 +138,19 @@ public class Partida {
       return true;
 
     }
-  }
-
+    return false;
   }
 
   /*
    * Metodo para comprobacion de la Escalera Menor
    */
 
-  public boolean EscaleraMenor() {
-    if (this.casillaVacia(3)) {
+  public static boolean EscaleraMenor(Dados dados) {
+    if (casillaVacia(3)) {
 
       for (int i = 1; i <= 3; i++) {
 
-        if (dados != i || d2 != i || d3 != i) {
+        if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
           return false;
 
@@ -166,18 +160,19 @@ public class Partida {
       return true;
 
     }
+    return false;
   }
 
   /*
    * Metodo para comprobacion de la Escalera Par
    */
 
-  public boolean EscaleraPar() {
-    if (this.casillaVacia(4)) {
+  public static boolean EscaleraPar(Dados dados) {
+    if (casillaVacia(4)) {
 
       for (int i = 1; i <= 5; i += 2) {
 
-        if (dados != i || d2 != i || d3 != i) {
+        if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
           return false;
 
@@ -187,38 +182,34 @@ public class Partida {
       return true;
 
     }
+    return false;
   }
 
   /*
    * Metodo para comprobacion de la Escalera Impar
    */
 
-  public boolean EscaleraImpar() {
-    if (this.casillaVacia(5)) {
+  public static boolean EscaleraImpar(Dados dados) {
+    if (casillaVacia(5)) {
 
       for (int i = 2; i <= 6; i += 2) {
 
-        if (dados != i || d2 != i || d3 != i) {
+        if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
           return false;
 
         }
       }
-
-      return true;
-
     }
+    return true;
   }
 
-  /*
-   * Metodo para comprobacion del Trece
-   */
 
-  String Trio() {
-    if (this.casillaVacia(6)) {
-      if (dados == d2 && dados == d3) {
+  static String Trio(Dados dados) {
+    if (casillaVacia(6)) {
+      if (Dados.getD1() == Dados.getD2() && Dados.getD1() == Dados.getD3()) {
 
-        this.tablero(6, 50);
+        // this.tablero(6, 50);
         return "Casilla Risco completada, 50 ptos";
       } else {
         return "casilla ocupada";
@@ -235,19 +226,19 @@ public class Partida {
    * que es.
    */
 
-  String numero(int n) {
+  static String numero(Dados dados, int n ) {
     int puntos = 0;
-    if (dados == n) {
+    if (Dados.getD1() == n) {
       puntos += n;
     }
-    if (d2 == n) {
+    if (Dados.getD2() == n) {
       puntos += n;
     }
-    if (d3 == n) {
+    if (Dados.getD3() == n) {
       puntos += n;
     }
 
-    int casilla;
+    int casilla = 0;
     if (n == 6) {
       casilla = 7;
     } else if (n == 5) {
@@ -262,15 +253,12 @@ public class Partida {
       casilla = 12;
     }
 
-    if (this.casillaVacia(casilla)) {
-      this.tablero(casilla, n);
+    if (casillaVacia(casilla)) {
+      // this.tablero(casilla, n);
       return "Casilla Risco completada " + n + " ptos";
     } else {
       return "casilla ocupada";
     }
   }
 
-
-  
-  
 }

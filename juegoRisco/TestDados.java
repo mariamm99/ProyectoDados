@@ -56,7 +56,7 @@ public class TestDados {
         break;
 
       case 7:
-        Partida.TresIguales(d1);
+        Partida.Trio(d1);
         break;
 
       case 8:
