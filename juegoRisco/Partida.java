@@ -62,7 +62,7 @@ public class Partida {
      * en el ArrayList, por ejemplo, en un Risco, se llamaría a 
      * casillaVacia(0)
      */
-    if (j1.p.get(casilla)==0) { // En el ArrayList, 0 es vacío, es decir, sin puntos
+    if (j1.p.get(casilla).equals(null)) { // En el ArrayList, null es vacío, es decir, sin puntos
       return true;
     } else {
       return false;
