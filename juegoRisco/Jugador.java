@@ -4,12 +4,15 @@ import java.util.ArrayList;
 public class Jugador {
   // Atributos ///////
   String nombre;
-  // TODO: Uso un ArrayList, igual hay que importarlo en las demás clases (SÓLO SI FALLA)
-  ArrayList<Integer> p = new ArrayList<Integer>();
+  int nj; // Número de Jugador, como si fuera un código
+  ArrayList<Integer> p = new ArrayList<Integer>(); // ArrayList de puntuaciones
+  Dados dadosJugador; // ArrayList de dados
   
   // Constructor ///////
-  public Jugador (String nombre) {
+  public Jugador (int nj, String nombre) {
+    this.nj = nj;
     this.nombre = nombre;
+    this.dadosJugador = new Dados(); // Genero un objeto Dado, el dado a su vez contiene tres dados (d1, d2, d3)
     p.add(null); // 0 Risco Para añadir puntuación → p.add(0, puntuación);
     p.add(null); // 1 Trece
     p.add(null); // 2 Escalera mayor
@@ -23,7 +26,6 @@ public class Jugador {
     p.add(null); // 10 Tres
     p.add(null); // 11 Dos
     p.add(null); // 12 As
-    // TODO: Calcular TOTAL en el tablero... O hacer método totalPtos()
   }
 
   public String getNombre() {
@@ -42,6 +44,22 @@ public class Jugador {
     this.p = p;
   }
   
+  public Dados getDadosJugador() {
+    return dadosJugador;
+  }
+
+  public void setDadosJugador(Dados dadosJugador) {
+    this.dadosJugador = dadosJugador;
+  }
+
+  public int getNj() {
+    return nj;
+  }
+
+  public void setNj(int nj) {
+    this.nj = nj;
+  }
+
   public int totalPtos() {
     int tmp = 0; // Variable que almacena todos los puntos
     for (int i: p) {
