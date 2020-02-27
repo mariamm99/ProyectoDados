@@ -36,10 +36,10 @@ public class TestDados {
     System.out.println(d1);
     */
     
-    int jugadorActual;
+    //int jugadorActual;
     // Asignación temporal, hay que implementar una forma de saber cual es el jugador que
     // está jugando.
-    jugadorActual = 1;
+    //jugadorActual = 1;
     
     // para recorrer los 13 juegos
     for (int i = 0; i < 13; i++) {
@@ -57,7 +57,9 @@ public class TestDados {
 	
 		      switch (opcion) {
 		      case 1:
-		        //Partida.Risco(Partida.jugadores.get(Partida.jugadores.indexOf(jugadorActual))); // Cambio temporal
+		    	
+		    	Jugador player = Partida.jugadores.get(Partida.jugadores.indexOf(j));
+		        Partida.Risco(player); // Cambio temporal
 		        break;
 		      case 2:
 		        //Partida.Trece(d1);
@@ -112,16 +114,6 @@ public class TestDados {
 		      }
     	}
     }
-
-    // Partida.Risco(d1);
-
-//    for (int i = 1; i <= nJugadores; i++) {
-//      String nombreTirada ="tirada" + i;
-//      System.out.println(nombreTirada);
-//      
-//      for (int j = 0; j < args.length; j++) {
-//        EjercicioDados nombreTirada = new EjercicioDados(i, nJugadores);
-//      }
     
     sc.close();
   }
