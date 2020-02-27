@@ -1,4 +1,4 @@
-package ProyectoDados.juegoRisco;
+//package ProyectoDados.juegoRisco;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -53,18 +53,18 @@ public class Partida {
   }
   
   public void muestraTablero() {
-    String[] juegos = {"\t" + "Risco", "Trece", "Escalera mayor", "Escalera menor", "Escalera par", "Escalera impar",
-        "Tres iguales", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "As", "Total" };
+    String[] juegos = {"\t" + "Risco", "Trece", "E.Mayor", "E.Menor", "E.Par", "E.Impar",
+        "Trio", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "As", "Total" };
     System.out.println();
     for (int i = 0; i <= juegos.length-1; i++) {
       System.out.print(juegos[i] + "\t"); 
     }
     for (int i = 0; i < nJugadores; i++) {
-      for (int j = 0; j < juegos.length -1; j++) {
+      for (int j = 0; j <= 14; j++) {
         if (j==0) {
           System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(i+1))).nombre + "\t"); // Del ArrayList de jugadores obtén j y de ese jugador saca i del ArrayList de puntuaciones (p). ¿Sería i u tendríamos que hacer otro bucle? EL 2 ES TEMPORAL
         } else {
-          System.out.print(jugadores.get(jugadores.indexOf(new Jugador(i+1))).p.get(j+1) + "\t");
+          System.out.print(jugadores.get(jugadores.indexOf(new Jugador(i+1))).p.get(j - 1) + "\t");
         }
       }
     }
