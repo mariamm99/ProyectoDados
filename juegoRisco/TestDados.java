@@ -7,6 +7,7 @@ public class TestDados {
     Scanner sc = new Scanner(System.in);
 
     int nJugadores;
+
     String nombreTmp;
     
     // Recojo el número de jugadores, y se los paso a Partida
@@ -28,7 +29,7 @@ public class TestDados {
 
     System.out.println(d1);
 
-    System.out.println("indique cuantos dados vas a cambiar");
+    System.out.println("Indique cuantos dados vas a cambiar:");
     int dadosCambiar = sc.nextInt();
 
     d1.cambiarDados(dadosCambiar);

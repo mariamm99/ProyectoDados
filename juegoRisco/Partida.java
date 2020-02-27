@@ -2,6 +2,7 @@ package ProyectoDados.juegoRisco;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import ProyectoDados.juegoRisco.*;
 
 public class Partida {
   // Scanner
@@ -86,6 +87,7 @@ public class Partida {
       if ((dados.getD1() == dados.getD2() || dados.getD1() == dados.getD3() || dados.getD2() == dados.getD3())
           && (dados.getD1() + dados.getD2() + dados.getD3() == 13)) {
 
+
         // tablero(0, 50);
         return "Casilla Risco completada, 50 ptos";
       } else {
@@ -93,7 +95,7 @@ public class Partida {
       }
 
     } else {
-      return "casilla ocupada";
+      return "Casilla ocupada";
     }
 
   }
@@ -112,7 +114,7 @@ public class Partida {
         return "Casilla trece completada, 26 ptos";
       }
     } else {
-      return "casilla ocupada";
+      return "Casilla ocupada";
     }
 
   }
@@ -121,19 +123,25 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Mayor
    */
 
-  public static boolean EscaleraMayor(Dados dados) {
-    if (casillaVacia(2)) {
+  public static String EscaleraMayor(Dados dados) {
+    if (this.casillaVacia(2)) {
       for (int i = 4; i <= 6; i++) {
 
         if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
-          return false;
+          return "Esta combinacion de dados no es una Escalera Mayor";
 
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Mayor";
+        	
         }
+        
+      } else {
+
+      return "Casilla ocupada";
+      
       }
-
-      return true;
-
     }
     return false;
   }
@@ -141,21 +149,27 @@ public class Partida {
   /*
    * Metodo para comprobacion de la Escalera Menor
    */
+  public static String  EscaleraMenor(Dados dados) {
+    if (this.casillaVacia(3)) {
 
-  public static boolean EscaleraMenor(Dados dados) {
-    if (casillaVacia(3)) {
 
       for (int i = 1; i <= 3; i++) {
 
         if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
-          return false;
+        	return "Esta combinacion de dados no es una Escalera Menor";
 
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Menor";
+        	
         }
+        
+      } else {
+
+      return "Casilla ocupada";
+      
       }
-
-      return true;
-
     }
     return false;
   }
@@ -163,21 +177,27 @@ public class Partida {
   /*
    * Metodo para comprobacion de la Escalera Par
    */
+  public static String EscaleraPar(Dados dados) {
+    if (this.casillaVacia(4)) {
 
-  public static boolean EscaleraPar(Dados dados) {
-    if (casillaVacia(4)) {
 
       for (int i = 1; i <= 5; i += 2) {
 
         if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
-          return false;
+        	return "Esta combinacion de dados no es una Escalera Par";
 
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Par";
+        	
         }
+        
+      } else {
+
+      return "Casilla ocupada";
+      
       }
-
-      return true;
-
     }
     return false;
   }
@@ -185,20 +205,24 @@ public class Partida {
   /*
    * Metodo para comprobacion de la Escalera Impar
    */
-
-  public static boolean EscaleraImpar(Dados dados) {
-    if (casillaVacia(5)) {
+  public static String EscaleraImpar(Dados dados) {
+    if (this.casillaVacia(5)) {
 
       for (int i = 2; i <= 6; i += 2) {
 
         if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {
 
-          return false;
+        	return "Esta combinacion de dados no es una Escalera Impar";
 
-        }
-      }
-    }
-    return true;
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Impar";
+             
+      } 
+     }else {
+
+      return "Casilla ocupada";
+     }
   }
 
 
@@ -254,7 +278,7 @@ public class Partida {
       // this.tablero(casilla, n);
       return "Casilla Risco completada " + n + " ptos";
     } else {
-      return "casilla ocupada";
+      return "Casilla ocupada";
     }
   }
 
