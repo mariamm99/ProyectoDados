@@ -53,24 +53,33 @@ public class Partida {
   }
   
   public void muestraTablero() {
-    String[] juegos = { " ", "Risco", "Trece", "Escalera mayor", "Escalera menor", "Escalera par", "Escalera impar",
+    String[] juegos = {"\t" + "Risco", "Trece", "Escalera mayor", "Escalera menor", "Escalera par", "Escalera impar",
         "Tres iguales", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "As", "Total" };
     System.out.println();
     for (int i = 0; i <= juegos.length-1; i++) {
-      System.out.print(juegos[i]);
-      for (int j = 0; j <= this.nJugadores-1; j++) {
-        System.out.print(jugadores.get(j).p.get(2)); // Del ArrayList de jugadores obtén j y de ese jugador saca i del ArrayList de puntuaciones (p). ¿Sería i u tendríamos que hacer otro bucle? EL 2 ES TEMPORAL
+      System.out.print(juegos[i] + "\t"); 
+    }
+    for (int i = 0; i <= juegos.length-1; i++) {
+      for (int j = 1; j <= this.nJugadores; j++) {
+        if (i==0) {
+          System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(j))).nombre + "\t"); // Del ArrayList de jugadores obtén j y de ese jugador saca i del ArrayList de puntuaciones (p). ¿Sería i u tendríamos que hacer otro bucle? EL 2 ES TEMPORAL
+        } else {
+          System.out.print(jugadores.get(jugadores.indexOf(new Jugador(j))).p.get(i-1) + "\t");
+        }
       }
     }
+    
   }
 
   public static boolean casillaVacia(int casilla) {
-    /* Habría que crear el jugador, temporalmente ¿j1? */
     /*
      * Cada juego, pasa como argumento de casillaVacia el número de posición en el
      * ArrayList, por ejemplo, en un Risco, se llamaría a casillaVacia(0)
      */
-    if (p.get(casilla).equals(null)) { // En el ArrayList, null es vacío, es decir, sin puntos
+    /*
+     * Cambiar nJugador por el que sea... ¿Como?
+     */
+    if (jugadores.get(jugadores.indexOf(new Jugador(1))).p.get(casilla).equals(null)) { // En el ArrayList, null es vacío, es decir, sin puntos
       return true;
     } else {
       return false;
@@ -137,13 +146,12 @@ public class Partida {
         }
         
       } 
-    }else {
+    } else {
 
       return "Casilla ocupada";
       
       }
     }
-  }
 
   /*
    * Metodo para comprobacion de la Escalera Menor
@@ -171,7 +179,6 @@ public class Partida {
       
       }
     }
-  }
 
   /*
    * Metodo para comprobacion de la Escalera Par
@@ -199,7 +206,6 @@ public class Partida {
       
       }
     }
-  }
 
   /*
    * Metodo para comprobacion de la Escalera Impar
@@ -225,7 +231,6 @@ public class Partida {
     	
      }
     }
-  }
 
 
   static String Trio(Dados dados) {
