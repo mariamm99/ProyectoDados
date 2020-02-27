@@ -90,13 +90,13 @@ public class Partida {
    * Metodo para comprobacion del Risco
    */
 
-  public static String Risco(Dados dados) {
+  public static String Risco(Jugador player) {
     if (casillaVacia(0)) {
-      if ((dados.getD1() == dados.getD2() || dados.getD1() == dados.getD3() || dados.getD2() == dados.getD3())
-          && (dados.getD1() + dados.getD2() + dados.getD3() == 13)) {
+      if ((player.dadosJugador.getD1() == player.dadosJugador.getD2() || player.dadosJugador.getD1() == player.dadosJugador.getD3() || player.dadosJugador.getD2() == player.dadosJugador.getD3())
+          && (player.dadosJugador.getD1()  + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13)) {
 
 
-        // tablero(0, 50);
+        //tablero(0, 50);
         return "Casilla Risco completada, 50 ptos";
       } else {
         return "Esta conbinación de números no es un risco";
