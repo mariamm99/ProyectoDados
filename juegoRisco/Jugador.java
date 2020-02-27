@@ -1,4 +1,4 @@
-package ProyectoDados.juegoRisco;
+//package ProyectoDados.juegoRisco;
 import java.util.ArrayList;
 
 public class Jugador {
