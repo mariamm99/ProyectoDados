@@ -59,12 +59,12 @@ public class Partida {
     for (int i = 0; i <= juegos.length-1; i++) {
       System.out.print(juegos[i] + "\t"); 
     }
-    for (int i = 0; i <= juegos.length-1; i++) {
-      for (int j = 1; j <= this.nJugadores; j++) {
-        if (i==0) {
-          System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(j))).nombre + "\t"); // Del ArrayList de jugadores obtén j y de ese jugador saca i del ArrayList de puntuaciones (p). ¿Sería i u tendríamos que hacer otro bucle? EL 2 ES TEMPORAL
+    for (int i = 0; i < nJugadores; i++) {
+      for (int j = 0; j < juegos.length -1; j++) {
+        if (j==0) {
+          System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(i+1))).nombre + "\t"); // Del ArrayList de jugadores obtén j y de ese jugador saca i del ArrayList de puntuaciones (p). ¿Sería i u tendríamos que hacer otro bucle? EL 2 ES TEMPORAL
         } else {
-          System.out.print(jugadores.get(jugadores.indexOf(new Jugador(j))).p.get(i-1) + "\t");
+          System.out.print(jugadores.get(jugadores.indexOf(new Jugador(i+1))).p.get(j+1) + "\t");
         }
       }
     }
