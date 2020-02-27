@@ -1,4 +1,4 @@
-//package ProyectoDados.juegoRisco;
+package ProyectoDados.juegoRisco;
 
 import java.util.Scanner;
 
@@ -23,8 +23,7 @@ public class TestDados {
     }
     
     /* BORRAR ¿? ¿Llamadas de prueba?
-    partida.muestraTablero();
-
+ 
     Dados d1 = new Dados();
 
     System.out.println(d1);
@@ -46,6 +45,14 @@ public class TestDados {
     	for (int j = 0; j < nJugadores; j++) {
     		
     		partida.muestraTablero();
+    		System.out.println();
+    		
+    		//Partida.jugadores.get(Partida.jugadores.indexOf(partida));
+    		//System.out.println(player);
+    		//partida.muestraDados(player);
+    		
+
+    		
     		System.out.println("\n\nTurno " + (i + 1) + " del Jugador " + Partida.jugadores.get(Partida.jugadores.indexOf(new Jugador(j+1))).nombre);
 			System.out.println("Menu inicial indique la letra de lo que quiere realizar: \n "
 		          + "[1]Risco \n [2]Trece \n [3]Escalera Mayor \n [4]Escalera Menor \n "
@@ -57,7 +64,8 @@ public class TestDados {
 	
 		      switch (opcion) {
 		      case 1:
-		        //Partida.Risco(Partida.jugadores.get(Partida.jugadores.indexOf(jugadorActual))); // Cambio temporal
+		        
+            //Partida.Risco(player); // Cambio temporal
 		        break;
 		      case 2:
 		        //Partida.Trece(d1);
@@ -125,5 +133,6 @@ public class TestDados {
     
     sc.close();
   }
+
 
 }

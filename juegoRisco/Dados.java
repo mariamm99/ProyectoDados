@@ -91,5 +91,4 @@ System.out.println("Dados definitivos");
   public String toString() {
     return "Dado 1: " + getD1() + " Dado 2: " + getD2() + " Dado 3: " + getD3();
   }
-
 }

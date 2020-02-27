@@ -1,4 +1,4 @@
-//package ProyectoDados.juegoRisco;
+package ProyectoDados.juegoRisco;
 import java.util.ArrayList;
 
 public class Jugador {
@@ -6,7 +6,7 @@ public class Jugador {
   String nombre;
   private int nj; // Número de Jugador, como si fuera un código
   ArrayList<Integer> p = new ArrayList<Integer>(); // ArrayList de puntuaciones
-  Dados dadosJugador; // ArrayList de dados
+  Dados dadosJugador; // ArrayList de dados ESTO NO ES ARRAYLIST!! es array solo by María
   
   // Constructor ///////
   public Jugador (int nj, String nombre) {
@@ -96,6 +96,11 @@ public class Jugador {
     if (nj != other.nj)
       return false;
     return true;
+  }
+
+  @Override
+  public String toString() {
+    return "Jugador [nombre=" + nombre +  ", dadosJugador=" + dadosJugador + "]";
   }
   
   
