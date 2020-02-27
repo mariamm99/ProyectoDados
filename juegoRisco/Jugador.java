@@ -26,6 +26,7 @@ public class Jugador {
     p.add(null); // 10 Tres
     p.add(null); // 11 Dos
     p.add(null); // 12 As
+    p.add(null); // 13 Para guardar el total
   }
   
   public Jugador(int nj) {

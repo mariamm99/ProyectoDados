@@ -35,7 +35,7 @@ public class TestDados {
     d1.cambiarDados(dadosCambiar);
     System.out.println(d1);
     */
-
+    partida.muestraTablero();
     
     int jugadorActual;
     // Asignación temporal, hay que implementar una forma de saber cual es el jugador que
@@ -55,53 +55,53 @@ public class TestDados {
 
       switch (opcion) {
       case 1:
-        Partida.Risco(partida.jugadores.get(partida.jugadores.indexOf(jugadorActual))); // Cambio temporal
+        //Partida.Risco(partida.jugadores.get(partida.jugadores.indexOf(jugadorActual))); // Cambio temporal
         break;
       case 2:
-        Partida.Trece(d1);
+        //Partida.Trece(d1);
         break;
       case 3:
-        Partida.EscaleraMayor(d1);
+        //Partida.EscaleraMayor(d1);
         break;
 
       case 4:
-        Partida.EscaleraMenor(d1);
+        //Partida.EscaleraMenor(d1);
         break;
 
       case 5:
-        Partida.EscaleraPar(d1);
+        //Partida.EscaleraPar(d1);
         break;
 
       case 6:
-        Partida.EscaleraImpar(d1);
+        //Partida.EscaleraImpar(d1);
         break;
 
       case 7:
-        Partida.Trio(d1);
+        //Partida.Trio(d1);
         break;
 
       case 8:
-        Partida.numero(d1, 6);
+        //Partida.numero(d1, 6);
         break;
 
       case 9:
-        Partida.numero(d1, 5);
+        //Partida.numero(d1, 5);
         break;
 
       case 10:
-        Partida.numero(d1, 4);
+        //Partida.numero(d1, 4);
         break;
 
       case 11:
-        Partida.numero(d1, 3);
+        //Partida.numero(d1, 3);
         break;
 
       case 12:
-        Partida.numero(d1, 2);
+        //Partida.numero(d1, 2);
         break;
 
       case 13:
-        Partida.numero(d1, 1);
+        //Partida.numero(d1, 1);
         break;
 
       default:
