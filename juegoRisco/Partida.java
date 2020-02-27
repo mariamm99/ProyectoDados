@@ -2,7 +2,6 @@ package ProyectoDados.juegoRisco;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import ProyectoDados.juegoRisco.*;
 
 public class Partida {
   // Scanner
@@ -124,7 +123,7 @@ public class Partida {
    */
 
   public static String EscaleraMayor(Dados dados) {
-    if (this.casillaVacia(2)) {
+    if (casillaVacia(2)) {
       for (int i = 4; i <= 6; i++) {
 
         if (Dados.getD1() != i || Dados.getD2() != i || Dados.getD3() != i) {

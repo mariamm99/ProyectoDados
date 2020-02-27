@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Jugador {
   // Atributos ///////
   String nombre;
-  int nj; // Número de Jugador, como si fuera un código
+  private int nj; // Número de Jugador, como si fuera un código
   ArrayList<Integer> p = new ArrayList<Integer>(); // ArrayList de puntuaciones
   Dados dadosJugador; // ArrayList de dados
   
