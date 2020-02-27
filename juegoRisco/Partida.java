@@ -103,12 +103,18 @@ public class Partida {
 
   public static String Risco(Jugador player) {
     if (casillaVacia(0)) {
+<<<<<<< HEAD
       if ((player.dadosJugador.getD1() == player.dadosJugador.getD2()
           || player.dadosJugador.getD1() == player.dadosJugador.getD3()
           || player.dadosJugador.getD2() == player.dadosJugador.getD3())
           && (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13)) {
+=======
+      if ((player.dadosJugador.getD1() == player.dadosJugador.getD2() || player.dadosJugador.getD1() == player.dadosJugador.getD3() || player.dadosJugador.getD2() == player.dadosJugador.getD3())
+          && (player.dadosJugador.getD1()  + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13)) {
 
-        // tablero(0, 50);
+>>>>>>> 966c4919b5f15916c9e93f0f0f9984f2520c98f5
+
+        //tablero(0, 50);
         return "Casilla Risco completada, 50 ptos";
       } else {
         return "Esta conbinación de números no es un risco";
