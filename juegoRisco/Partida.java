@@ -136,20 +136,20 @@ public class Partida {
         	
         }
         
-      } else {
+      } 
+    }else {
 
       return "Casilla ocupada";
       
       }
     }
-    return false;
   }
 
   /*
    * Metodo para comprobacion de la Escalera Menor
    */
   public static String  EscaleraMenor(Dados dados) {
-    if (this.casillaVacia(3)) {
+    if (casillaVacia(3)) {
 
 
       for (int i = 1; i <= 3; i++) {
@@ -164,20 +164,20 @@ public class Partida {
         	
         }
         
-      } else {
+      } 
+    }else {
 
       return "Casilla ocupada";
       
       }
     }
-    return false;
   }
 
   /*
    * Metodo para comprobacion de la Escalera Par
    */
   public static String EscaleraPar(Dados dados) {
-    if (this.casillaVacia(4)) {
+    if (casillaVacia(4)) {
 
 
       for (int i = 1; i <= 5; i += 2) {
@@ -192,20 +192,20 @@ public class Partida {
         	
         }
         
-      } else {
+      } 
+    }else {
 
       return "Casilla ocupada";
       
       }
     }
-    return false;
   }
 
   /*
    * Metodo para comprobacion de la Escalera Impar
    */
   public static String EscaleraImpar(Dados dados) {
-    if (this.casillaVacia(5)) {
+    if (casillaVacia(5)) {
 
       for (int i = 2; i <= 6; i += 2) {
 
@@ -217,11 +217,14 @@ public class Partida {
         	
         	return "Esta combinacion es una Escalera Impar";
              
-      } 
-     }else {
-
-      return "Casilla ocupada";
+        } 
+      }
+    }else {
+    	
+    	return "Casilla ocupada";
+    	
      }
+    }
   }
 
 
