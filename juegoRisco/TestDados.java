@@ -7,9 +7,22 @@ public class TestDados {
     Scanner sc = new Scanner(System.in);
 
     int nJugadores;
-
-    System.out.println("indica cuantos jugadores son");
+    String nombreTmp;
+    
+    // Recojo el número de jugadores, y se los paso a Partida
+    System.out.print("Indica cuantos jugadores sois: ");
     nJugadores = sc.nextInt();
+    // Creo una partida
+    Partida partida = new Partida(nJugadores);
+    // Creo jugadores, llamando a crearJugadores en Partida
+    for (int i=1;i<=nJugadores;i++) {
+      System.out.print("Introduce el nombre del jugador " + i + ": ");
+      nombreTmp = sc.next();
+      partida.crearJugadores(i, nombreTmp);
+    }
+    
+    /* BORRAR */
+    partida.muestraTablero();
 
     Dados d1 = new Dados();
 
@@ -98,6 +111,8 @@ public class TestDados {
 //      for (int j = 0; j < args.length; j++) {
 //        EjercicioDados nombreTirada = new EjercicioDados(i, nJugadores);
 //      }
+    
+    sc.close();
   }
 
 }

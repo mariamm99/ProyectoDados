@@ -11,16 +11,10 @@ public class Partida {
   int ronda;
   int nJugadores;
 
-  static ArrayList<Jugador> partida = new ArrayList<Jugador>();
-
-  static void crearJugadores(String nombre) {
-
-    Jugador jugador = new Jugador(nombre);
-    partida.add(jugador);
-  }
+  static ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 
   public Partida(int nJugadores) {
-    setnJugadores(nJugadores);
+    this.nJugadores = nJugadores;
     this.ronda = 1;
   }
 
@@ -30,14 +24,13 @@ public class Partida {
 //    for (int i = 0; i <= this.nJugadores; i++) {
 //      System.out.println("Introduce el nombre del jugador " + i + ": ");
 //      nombretmp = s.next();
-//      // TODO: Ahora como hacemos que cree tantas instancias de jugador según
-//      // nJugadores?
 //    }
 //  }
 
   // Comento esto temporalmente, en sustitución de muestraTablero
   // public int[][] tablero(int casilla, int puntos) {
 
+  // Getters & Setters
   public int getRonda() {
     return ronda;
   }
@@ -54,14 +47,19 @@ public class Partida {
     this.nJugadores = nJugadores;
   }
 
+  public void crearJugadores(int nj, String nombre) {
+    Jugador jugador = new Jugador(nj, nombre);
+    jugadores.add(jugador);
+  }
+  
   public void muestraTablero() {
     String[] juegos = { " ", "Risco", "Trece", "Escalera mayor", "Escalera menor", "Escalera par", "Escalera impar",
         "Tres iguales", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "As", "Total" };
     System.out.println();
-    for (int i = 0; i <= juegos.length; i++) {
-      System.out.print(juegos[i] + "\t");
-      for (int j = 0; j <= this.nJugadores; j++) {
-        System.out.println();
+    for (int i = 0; i <= juegos.length-1; i++) {
+      System.out.print(juegos[i]);
+      for (int j = 0; j <= this.nJugadores-1; j++) {
+        System.out.print(jugadores.get(j).p.get(2)); // Del ArrayList de jugadores obtén j y de ese jugador saca i del ArrayList de puntuaciones (p). ¿Sería i u tendríamos que hacer otro bucle? EL 2 ES TEMPORAL
       }
     }
   }
@@ -72,8 +70,7 @@ public class Partida {
      * Cada juego, pasa como argumento de casillaVacia el número de posición en el
      * ArrayList, por ejemplo, en un Risco, se llamaría a casillaVacia(0)
      */
-    // partida[casilla]
-    if (0 == 0) { // En el ArrayList, 0 es vacío, es decir, sin puntos
+    if (p.get(casilla).equals(null)) { // En el ArrayList, null es vacío, es decir, sin puntos
       return true;
     } else {
       return false;
