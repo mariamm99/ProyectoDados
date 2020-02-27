@@ -10,8 +10,8 @@ public class Jugador {
   
   // Constructor ///////
   public Jugador (int nj, String nombre) {
-    this.nj = nj;
-    this.nombre = nombre;
+    this.nj = nj; // Número de jugador
+    this.nombre = nombre; // Nombre de jugador
     this.dadosJugador = new Dados(); // Genero un objeto Dado, el dado a su vez contiene tres dados (d1, d2, d3)
     p.add(null); // 0 Risco Para añadir puntuación → p.add(0, puntuación);
     p.add(null); // 1 Trece
@@ -27,6 +27,11 @@ public class Jugador {
     p.add(null); // 11 Dos
     p.add(null); // 12 As
   }
+  
+  public Jugador(int nj) {
+    this.nj = nj;
+  }
+  
 
   public String getNombre() {
     return nombre;
@@ -66,6 +71,30 @@ public class Jugador {
       tmp += i;
     }
     return tmp;
+  }
+  
+
+  /* Métodos equals y hashCode generados por Eclipse */
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + nj;
+    return result;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Jugador other = (Jugador) obj;
+    if (nj != other.nj)
+      return false;
+    return true;
   }
   
   

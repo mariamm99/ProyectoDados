@@ -13,7 +13,7 @@ public class TestDados {
     // Recojo el número de jugadores, y se los paso a Partida
     System.out.print("Indica cuantos jugadores sois: ");
     nJugadores = sc.nextInt();
-    // Creo una partida
+    // Crear una partida ////////
     Partida partida = new Partida(nJugadores);
     // Creo jugadores, llamando a crearJugadores en Partida
     for (int i=1;i<=nJugadores;i++) {
@@ -22,7 +22,7 @@ public class TestDados {
       partida.crearJugadores(i, nombreTmp);
     }
     
-    /* BORRAR */
+    /* BORRAR ¿? ¿Llamadas de prueba?
     partida.muestraTablero();
 
     Dados d1 = new Dados();
@@ -34,7 +34,14 @@ public class TestDados {
 
     d1.cambiarDados(dadosCambiar);
     System.out.println(d1);
+    */
 
+    
+    int jugadorActual;
+    // Asignación temporal, hay que implementar una forma de saber cual es el jugador que
+    // está jugando.
+    jugadorActual = 1;
+    
     // para recorrer los 13 juegos
     for (int i = 0; i < 13; i++) {
 
@@ -48,7 +55,7 @@ public class TestDados {
 
       switch (opcion) {
       case 1:
-        Partida.Risco(d1);
+        Partida.Risco(partida.jugadores.get(partida.jugadores.indexOf(jugadorActual))); // Cambio temporal
         break;
       case 2:
         Partida.Trece(d1);
