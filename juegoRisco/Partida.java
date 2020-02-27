@@ -1,6 +1,7 @@
 package ProyectoDados.juegoRisco;
 
 import java.util.Scanner;
+import ProyectoDados.juegoRisco.*;
 
 public class Partida {
 
@@ -92,7 +93,7 @@ public class Partida {
 
   public static String Risco(Dados dados) {
     if (casillaVacia(0)) {
-      if ((dados.getD1() == dados.getD2() || dados.getD1() == dados.getD3() || dados.getD2() == dados.getD3()) && (dados.getD1() + dados.getD2() +dados.getD3() == 13)) {
+      if ((Dados() == dados.getD2() || dados.getD1() == dados.getD3() || dados.getD2() == dados.getD3()) && (dados.getD1() + dados.getD2() +dados.getD3() == 13)) {
 
         //tablero(0, 50);
         return "Casilla Risco completada, 50 ptos";
@@ -101,7 +102,7 @@ public class Partida {
       }
 
     } else {
-      return "casilla ocupada";
+      return "Casilla ocupada";
     }
 
   }
@@ -120,7 +121,7 @@ public class Partida {
         return "Casilla trece completada, 26 ptos";
       }
     } else {
-      return "casilla ocupada";
+      return "Casilla ocupada";
     }
 
   }
@@ -129,19 +130,25 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Mayor
    */
 
-  public boolean EscaleraMayor() {
+  public static String EscaleraMayor() {
     if (this.casillaVacia(2)) {
       for (int i = 4; i <= 6; i++) {
 
         if (dados != i || d2 != i || d3 != i) {
 
-          return false;
+          return "Esta combinacion de dados no es una Escalera Mayor";
 
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Mayor";
+        	
         }
+        
+      } else {
+
+      return "Casilla ocupada";
+      
       }
-
-      return true;
-
     }
   }
 
@@ -151,20 +158,26 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Menor
    */
 
-  public boolean EscaleraMenor() {
+  public static String  EscaleraMenor() {
     if (this.casillaVacia(3)) {
 
       for (int i = 1; i <= 3; i++) {
 
         if (dados != i || d2 != i || d3 != i) {
 
-          return false;
+        	return "Esta combinacion de dados no es una Escalera Menor";
 
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Menor";
+        	
         }
+        
+      } else {
+
+      return "Casilla ocupada";
+      
       }
-
-      return true;
-
     }
   }
 
@@ -172,20 +185,26 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Par
    */
 
-  public boolean EscaleraPar() {
+  public static String EscaleraPar() {
     if (this.casillaVacia(4)) {
 
       for (int i = 1; i <= 5; i += 2) {
 
         if (dados != i || d2 != i || d3 != i) {
 
-          return false;
+        	return "Esta combinacion de dados no es una Escalera Par";
 
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Par";
+        	
         }
+        
+      } else {
+
+      return "Casilla ocupada";
+      
       }
-
-      return true;
-
     }
   }
 
@@ -193,20 +212,26 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Impar
    */
 
-  public boolean EscaleraImpar() {
+  public static String EscaleraImpar() {
     if (this.casillaVacia(5)) {
 
       for (int i = 2; i <= 6; i += 2) {
 
         if (dados != i || d2 != i || d3 != i) {
 
-          return false;
+        	return "Esta combinacion de dados no es una Escalera Impar";
 
+        }else {
+        	
+        	return "Esta combinacion es una Escalera Impar";
+        	
         }
+        
+      } else {
+
+      return "Casilla ocupada";
+      
       }
-
-      return true;
-
     }
   }
 
@@ -266,7 +291,7 @@ public class Partida {
       this.tablero(casilla, n);
       return "Casilla Risco completada " + n + " ptos";
     } else {
-      return "casilla ocupada";
+      return "Casilla ocupada";
     }
   }
 

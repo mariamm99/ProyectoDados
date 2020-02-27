@@ -43,10 +43,10 @@ public class Dados {
 
   void cambiarDados(int nDadosCambiar) {
 
-    if (nDadosCambiar > 1) {
+    if (nDadosCambiar > 1) { //Esto se puede omitir??
       if (nDadosCambiar > 3) {
 
-        System.out.println("solo puedes cambiar 3 dados");
+        System.out.println("Solo puedes cambiar 3 dados");
         nDadosCambiar = 3;
       }
 
@@ -56,7 +56,7 @@ public class Dados {
       boolean cambiod3 = true;
       for (int i = 0; i < nDadosCambiar; i++) {
 
-        System.out.println("que dado quiere cambiar, 1, 2 o 3");
+        System.out.println("Que dado quiere cambiar, 1, 2 o 3");
         dado = sc.nextInt();
 
         if (dado == 1 && cambiod1) {
@@ -72,24 +72,24 @@ public class Dados {
 
           cambiod3 = false;
         } else if (!cambiod1 || !cambiod2 || !cambiod3) {
-          System.out.println("dado " + dado + " ya ha sido cambiado introduzca otro");
+          System.out.println("Dado " + dado + " ya ha sido cambiado introduzca otro");
           --i;
         } else {
-          System.out.println("dado " + dado + " no existe introduzca otro");
+          System.out.println("Dado " + dado + " no existe introduzca otro");
           --i;
         }
       }
 
     } else if (nDadosCambiar == 0) {
-      System.out.println("continuemos con la partida.");
+      System.out.println("Continuemos con la partida.");
 
     }
-System.out.println("dados definitivos");
+System.out.println("Dados definitivos");
   }
 
   @Override
   public String toString() {
-    return "dado 1: " + getD1() + " dado 2: " + getD2() + " dado 3: " + getD3();
+    return "Dado 1: " + getD1() + " Dado 2: " + getD2() + " Dado 3: " + getD3();
   }
 
 }

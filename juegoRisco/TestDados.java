@@ -8,14 +8,14 @@ public class TestDados {
 
     int nJugadores;
 
-    System.out.println("indica cuantos jugadores son");
+    System.out.println("Indica cuantos jugadores son:");
     nJugadores = sc.nextInt();
 
     Dados d1 = new Dados();
 
     System.out.println(d1);
 
-    System.out.println("indique cuantos dados vas a cambiar");
+    System.out.println("Indique cuantos dados vas a cambiar:");
     int dadosCambiar = sc.nextInt();
 
     d1.cambiarDados(dadosCambiar);
