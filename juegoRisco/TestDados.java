@@ -48,12 +48,11 @@ public class TestDados {
     		System.out.println();
     		
     		//Partida.jugadores.get(Partida.jugadores.indexOf(partida));
-    		//System.out.println(player);
-    		//partida.muestraDados(player);
-    		
+    		//System.out.println(player);   		
 
     		
     		System.out.println("\n\nTurno " + (i + 1) + " del Jugador " + Partida.jugadores.get(Partida.jugadores.indexOf(new Jugador(j+1))).nombre);
+    		System.out.println("\nEn esta tirada obtienes:\n" + Partida.tirarDados(Partida.jugadores.get(Partida.jugadores.indexOf(new Jugador(j+1)))));
 			System.out.println("Menu inicial indique la letra de lo que quiere realizar: \n "
 		          + "[1]Risco \n [2]Trece \n [3]Escalera Mayor \n [4]Escalera Menor \n "
 		          + "[5]Escalera par \n [6]Escalera impar \n [7]Trio \n [8]Seis \n " + "[9]Cinco \n "
@@ -64,14 +63,8 @@ public class TestDados {
 	
 		      switch (opcion) {
 		      case 1:
-<<<<<<< HEAD
-		        
-            //Partida.Risco(player); // Cambio temporal
-=======
-		    	
-		    	Jugador player = Partida.jugadores.get(Partida.jugadores.indexOf(j));
-		        Partida.Risco(player); // Cambio temporal
->>>>>>> 966c4919b5f15916c9e93f0f0f9984f2520c98f5
+		    	// Jugador player = Partida.jugadores.get(Partida.jugadores.indexOf(j));
+		        // Partida.Risco(player); // Cambio temporal
 		        break;
 		      case 2:
 		        //Partida.Trece(d1);

@@ -51,6 +51,11 @@ public class Partida {
     
   }
   
+  public static Dados tirarDados(Jugador player) {
+    player.setDadosJugador(new Dados()); // No sé si funcionará, probar
+    return player.dadosJugador;
+  }
+  
   public void muestraTablero() {
     String[] juegos = { "\t" + "Risco", "Trece", "E.Mayor", "E.Menor", "E.Par", "E.Impar", "Trio", "Seis", "Cinco",
         "Cuatro", "Tres", "Dos", "As", "Total" };
@@ -81,7 +86,7 @@ public class Partida {
 
   }
 
-  public static boolean casillaVacia(int casilla) {
+  public static boolean casillaVacia(int nJugador, int casilla) {
     /*
      * Cada juego, pasa como argumento de casillaVacia el número de posición en el
      * ArrayList, por ejemplo, en un Risco, se llamaría a casillaVacia(0)
@@ -89,7 +94,7 @@ public class Partida {
     /*
      * Cambiar nJugador por el que sea... ¿Como?
      */
-    if (jugadores.get(jugadores.indexOf(new Jugador(1))).p.get(casilla).equals(null)) { // En el ArrayList, null es
+    if (jugadores.get(jugadores.indexOf(new Jugador(nJugador))).p.get(casilla).equals(null)) { // En el ArrayList, null es
                                                                                         // vacío, es decir, sin puntos
       return true;
     } else {
@@ -102,22 +107,16 @@ public class Partida {
    */
 
   public static String Risco(Jugador player) {
-    if (casillaVacia(0)) {
-<<<<<<< HEAD
+    if (casillaVacia(player.getNj() ,0)) {
       if ((player.dadosJugador.getD1() == player.dadosJugador.getD2()
           || player.dadosJugador.getD1() == player.dadosJugador.getD3()
           || player.dadosJugador.getD2() == player.dadosJugador.getD3())
           && (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13)) {
-=======
-      if ((player.dadosJugador.getD1() == player.dadosJugador.getD2() || player.dadosJugador.getD1() == player.dadosJugador.getD3() || player.dadosJugador.getD2() == player.dadosJugador.getD3())
-          && (player.dadosJugador.getD1()  + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13)) {
 
->>>>>>> 966c4919b5f15916c9e93f0f0f9984f2520c98f5
-
-        //tablero(0, 50);
+        player.p.set(0, 50);
         return "Casilla Risco completada, 50 ptos";
       } else {
-        return "Esta conbinación de números no es un risco";
+        return "Esta combinación de números no es un risco";
       }
 
     } else {
@@ -131,13 +130,13 @@ public class Partida {
    */
 
   public static String Trece(Jugador player) {
-    if (casillaVacia(1)) {
+    if (casillaVacia(player.getNj(), 1)) {
       if (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13) {
-        return "Esta conbinación de números no es un trece";
+        return "Esta combinación de números no es un trece";
       } else {
 
-        // tablero(1, 50);
-        return "Casilla trece completada, 26 ptos";
+        player.p.set(1, 26);
+        return "Casilla Trece completada, 26 ptos";
       }
     } else {
       return "Casilla ocupada";
@@ -150,16 +149,16 @@ public class Partida {
    */
 
   public static String EscaleraMayor(Jugador player) {
-    if (casillaVacia(2)) {
+    if (casillaVacia(player.getNj(), 2)) {
       for (int i = 4; i <= 6; i++) {
 
         if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
 
-          return "Esta combinacion de dados no es una Escalera Mayor";
+          return "Esta combinación de dados no es una Escalera Mayor";
 
         } else {
-
-          return "Esta combinacion es una Escalera Mayor";
+          player.p.set(2, 20);
+          return "Esta combinación es una Escalera Mayor, 20 ptos";
 
         }
 
@@ -173,16 +172,17 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Menor
    */
   public static String EscaleraMenor(Jugador player) {
-    if (casillaVacia(3)) {
+    if (casillaVacia(player.getNj(), 3)) {
 
       for (int i = 1; i <= 3; i++) {
 
         if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
 
-          return "Esta combinacion de dados no es una Escalera Menor";
+          return "Esta combinación de dados no es una Escalera Menor";
 
         } else {
-          return "Esta combinacion es una Escalera Menor";
+          player.p.set(3, 20);
+          return "Esta combinación es una Escalera Menor, 20 ptos";
         }
       }
     }
@@ -194,15 +194,16 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Par
    */
   public static String EscaleraPar(Jugador player) {
-    if (casillaVacia(4)) {
+    if (casillaVacia(player.getNj(), 4)) {
 
       for (int i = 1; i <= 5; i += 2) {
 
         if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
 
-          return "Esta combinacion de dados no es una Escalera Par";
+          return "Esta combinación de dados no es una Escalera Par";
         } else {
-          return "Esta combinacion es una Escalera Par";
+          player.p.set(4, 20);
+          return "Esta combinación es una Escalera Par, 20 ptos";
         }
       }
     }
@@ -214,17 +215,17 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Impar
    */
   public static String EscaleraImpar(Jugador player) {
-    if (casillaVacia(5)) {
+    if (casillaVacia(player.getNj(), 5)) {
 
       for (int i = 2; i <= 6; i += 2) {
 
         if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
 
-          return "Esta combinacion de dados no es una Escalera Impar";
+          return "Esta combinación de dados no es una Escalera Impar";
 
         } else {
-
-          return "Esta combinacion es una Escalera Impar";
+          player.p.set(5, 20);
+          return "Esta combinación es una Escalera Impar";
 
         }
       }
@@ -235,18 +236,18 @@ public class Partida {
   }
 
   static String Trio(Jugador player) {
-    if (casillaVacia(6)) {
+    if (casillaVacia(player.getNj(), 6)) {
       if (player.dadosJugador.getD1() == player.dadosJugador.getD2()
           && player.dadosJugador.getD1() == player.dadosJugador.getD3()) {
 
-        // this.tablero(6, 50);
-        return "Casilla Risco completada, 50 ptos";
+        player.p.set(6, 25);
+        return "Casilla Trío completada, 25 ptos";
       } else {
-        return "casilla ocupada";
+        return "Casilla ocupada";
       }
 
     } else {
-      return "Esta conbinación de números no es un risco";
+      return "Esta combinación de números no es un trío.";
     }
 
   }
@@ -283,8 +284,8 @@ public class Partida {
       casilla = 12;
     }
 
-    if (casillaVacia(casilla)) {
-      // this.tablero(casilla, n);
+    if (casillaVacia(player.getNj(), casilla)) {
+      player.p.set(casilla, n);
       return "Casilla Risco completada " + n + " ptos";
     } else {
       return "Casilla ocupada";
