@@ -43,11 +43,13 @@ public class Dados {
 
   void cambiarDados(int nDadosCambiar) {
 
-    if (nDadosCambiar > 1) {
-      if (nDadosCambiar > 3) {
+ 
+     if (nDadosCambiar > 3) {
 
         System.out.println("Solo puedes cambiar 3 dados");
         nDadosCambiar = 3;
+        System.out.println("Continuemos con la partida.");
+
       }
 
       int dado;
@@ -80,10 +82,7 @@ public class Dados {
         }
       }
 
-    } else if (nDadosCambiar == 0) {
-      System.out.println("Continuemos con la partida.");
-
-    }
+   
 System.out.println("Dados definitivos");
   }
 

@@ -85,27 +85,28 @@ public class TestDados {
 		        break;
 		
 		      case 8:
-		        Partida.numero(player, player.dadosJugador.d1);
+		        Partida.numero(player,6);
 		        break;
 		
 		      case 9:
-            Partida.numero(player, player.dadosJugador.d1);
+            Partida.numero(player, 5);
 		        break;
 		
 		      case 10:
-            Partida.numero(player, player.dadosJugador.d1);
+            Partida.numero(player, 4);
+ 
 		        break;
 		
 		      case 11:
-            Partida.numero(player, player.dadosJugador.d1);
+            Partida.numero(player,3);
 		        break;
 		
 		      case 12:
-            Partida.numero(player, player.dadosJugador.d1);
+            Partida.numero(player, 2);
 		        break;
 		
 		      case 13:
-            Partida.numero(player, player.dadosJugador.d1);
+            Partida.numero(player, 1);
 		        break;
 		        
 		      case 14:
@@ -113,10 +114,12 @@ public class TestDados {
 		        int nDadosCambiar = sc.nextInt();
 		        player.dadosJugador.cambiarDados(nDadosCambiar);
 		        System.out.println(player.dadosJugador);
+		        j--;
 		        break;
 		
 		      default:
-		    	  System.out.println("Esto es una prueba");
+		    	  System.out.println("opción no valida");
+		    	  j--;
 		        break;
 		      }
     	}
