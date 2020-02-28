@@ -298,6 +298,7 @@ public class Partida {
 
   static String numero(Jugador player, int n) {
     int puntos = 0;
+    
     if (player.dadosJugador.getD1() == n) {
       puntos += n;
     }
@@ -311,6 +312,7 @@ public class Partida {
     int casilla = 0;
     if (n == 6) {
       casilla = 7;
+     
     } else if (n == 5) {
       casilla = 8;
     } else if (n == 4) {
@@ -324,8 +326,8 @@ public class Partida {
     }
 
     if (casillaVacia(player, casilla)) {
-      player.p.set(casilla, n);
-      player.p.set(puntos, player.totalPtos());
+      player.p.set(casilla, puntos);
+      player.p.set(13, player.totalPtos());
       return "Casilla" + n + "completada con " + n + " ptos";
     } else {
       return "Casilla ocupada";
