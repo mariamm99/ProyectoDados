@@ -43,16 +43,11 @@ public class TestDados {
     // para recorrer los 13 juegos
     for (int i = 0; i < 13; i++) {
     	for (int j = 0; j < nJugadores; j++) {
-    		
     		partida.muestraTablero();
     		System.out.println();
     		
-    		//Partida.jugadores.get(Partida.jugadores.indexOf(partida));
-    		//System.out.println(player);   		
-
-    		
-    		System.out.println("\n\nTurno " + (i + 1) + " del Jugador " + Partida.jugadores.get(Partida.jugadores.indexOf(new Jugador(j+1))).nombre);
-    		System.out.println("\nEn esta tirada obtienes:\n" + Partida.tirarDados(Partida.jugadores.get(Partida.jugadores.indexOf(new Jugador(j+1)))));
+    		System.out.println("\n\nTurno " + (i + 1) + " del Jugador " + partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1))).nombre);
+    		System.out.println("\nEn esta tirada obtienes:\n" + Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1)))));
 			System.out.println("Menu inicial indique la letra de lo que quiere realizar: \n "
 		          + "[1]Risco \n [2]Trece \n [3]Escalera Mayor \n [4]Escalera Menor \n "
 		          + "[5]Escalera par \n [6]Escalera impar \n [7]Trio \n [8]Seis \n " + "[9]Cinco \n "
@@ -60,57 +55,57 @@ public class TestDados {
 		
 	      	int opcion;
 	      	opcion = sc.nextInt();
+          Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1)));
 	
 		      switch (opcion) {
 		      case 1:
-		    	// Jugador player = Partida.jugadores.get(Partida.jugadores.indexOf(j));
-		        // Partida.Risco(player); // Cambio temporal
+		        System.out.println(Partida.Risco(player));
 		        break;
 		      case 2:
-		        //Partida.Trece(d1);
+		        System.out.println(Partida.Trece(player));
 		        break;
 		      case 3:
-		        //Partida.EscaleraMayor(d1);
+		        System.out.println(Partida.EscaleraMayor(player));
 		        break;
 		
 		      case 4:
-		        //Partida.EscaleraMenor(d1);
+		        System.out.println(Partida.EscaleraMenor(player));
 		        break;
 		
 		      case 5:
-		        //Partida.EscaleraPar(d1);
+		        System.out.println(Partida.EscaleraPar(player));
 		        break;
 		
 		      case 6:
-		        //Partida.EscaleraImpar(d1);
+		        System.out.println(Partida.EscaleraImpar(player));
 		        break;
 		
 		      case 7:
-		        //Partida.Trio(d1);
+		        System.out.println(Partida.Trio(player));
 		        break;
 		
 		      case 8:
-		        //Partida.numero(d1, 6);
+		        Partida.numero(player, player.dadosJugador.d1);
 		        break;
 		
 		      case 9:
-		        //Partida.numero(d1, 5);
+            Partida.numero(player, player.dadosJugador.d1);
 		        break;
 		
 		      case 10:
-		        //Partida.numero(d1, 4);
+            Partida.numero(player, player.dadosJugador.d1);
 		        break;
 		
 		      case 11:
-		        //Partida.numero(d1, 3);
+            Partida.numero(player, player.dadosJugador.d1);
 		        break;
 		
 		      case 12:
-		        //Partida.numero(d1, 2);
+            Partida.numero(player, player.dadosJugador.d1);
 		        break;
 		
 		      case 13:
-		        //Partida.numero(d1, 1);
+            Partida.numero(player, player.dadosJugador.d1);
 		        break;
 		
 		      default:
