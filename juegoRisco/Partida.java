@@ -45,17 +45,15 @@ public class Partida {
 //  }
   // PRUEBA PARA SACAR EL JUGADOR DE OTRA FORMA A LO DE INDEXOF...
 
-  
   public void cambiarDados() {
- 
-    
+
   }
-  
+
   public static Dados tirarDados(Jugador player) {
     player.setDadosJugador(new Dados()); // No sé si funcionará, probar
     return player.dadosJugador;
   }
-  
+
   public void muestraTablero() {
     String[] juegos = { "\t" + "Risco", "Trece", "E.Mayor", "E.Menor", "E.Par", "E.Impar", "Trio", "Seis", "Cinco",
         "Cuatro", "Tres", "Dos", "As", "Total" };
@@ -94,7 +92,9 @@ public class Partida {
     /*
      * Cambiar nJugador por el que sea... ¿Como?
      */
-    // if (jugadores.get(jugadores.indexOf(new Jugador(1))).p.get(casilla).equals(null)) { // En el ArrayList, null es vacío, es decir, sin puntos
+    // if (jugadores.get(jugadores.indexOf(new
+    // Jugador(1))).p.get(casilla).equals(null)) { // En el ArrayList, null es
+    // vacío, es decir, sin puntos
     if (player.p.get(casilla) == null) {
       return true;
     } else {
@@ -133,12 +133,12 @@ public class Partida {
   public static String Trece(Jugador player) {
     if (casillaVacia(player, 1)) {
       if (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13) {
-        return "Esta combinación de números no es un trece";
-      } else {
-
         player.p.set(1, 26);
         player.p.set(13, player.totalPtos());
         return "Casilla Trece completada, 26 ptos";
+      } else {
+        return "Esta combinación de números no es un trece";
+       
       }
     } else {
       return "Casilla ocupada";
@@ -151,44 +151,64 @@ public class Partida {
    */
 
   public static String EscaleraMayor(Jugador player) {
+    boolean valord1 = false;
+    boolean valord2 = false;
+    boolean valord3 = false;
+
     if (casillaVacia(player, 2)) {
       for (int i = 4; i <= 6; i++) {
 
-        if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
-
-          return "Esta combinación de dados no es una Escalera Mayor";
-
+        if (player.dadosJugador.getD1() == i) {
+          valord1 = true;
+        } else if (player.dadosJugador.getD2() == i) {
+          valord2 = true;
+        } else if (player.dadosJugador.getD3() == i) {
+          valord2 = true;
         } else {
-          player.p.set(2, 20);
-          player.p.set(13, player.totalPtos());
-          return "Esta combinación es una Escalera Mayor, 20 ptos";
-
+          return "Esta combinación de dados no es una Escalera Mayor";
         }
-
+      }
+      
+      if (valord3 && valord1 && valord2) {
+        player.p.set(2, 20);
+        player.p.set(13, player.totalPtos());
+        return "Esta combinación es una Escalera Mayor, 20 ptos";
       }
     }
-    return "Casilla ocupada";
 
+    return "Casilla ocupada";
   }
 
   /*
    * Metodo para comprobacion de la Escalera Menor
    */
   public static String EscaleraMenor(Jugador player) {
+    boolean valord1 = false;
+    boolean valord2 = false;
+    boolean valord3 = false;
+    
     if (casillaVacia(player, 3)) {
 
       for (int i = 1; i <= 3; i++) {
 
-        if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
-
+        
+        if (player.dadosJugador.getD1() == i) {
+          valord1 = true;
+        } else if (player.dadosJugador.getD2() == i) {
+          valord2 = true;
+        } else if (player.dadosJugador.getD3() == i) {
+          valord2 = true;
+        } else {
           return "Esta combinación de dados no es una Escalera Menor";
 
-        } else {
+        }  
+      }
+      
+        if (valord3 && valord1 && valord2) {
           player.p.set(3, 20);
           player.p.set(13, player.totalPtos());
           return "Esta combinación es una Escalera Menor, 20 ptos";
         }
-      }
     }
     return "Casilla ocupada";
 
@@ -198,19 +218,31 @@ public class Partida {
    * Metodo para comprobacion de la Escalera Par
    */
   public static String EscaleraPar(Jugador player) {
+    boolean valord1 = false;
+    boolean valord2 = false;
+    boolean valord3 = false;
+
     if (casillaVacia(player, 4)) {
 
-      for (int i = 1; i <= 5; i += 2) {
+      for (int i = 2; i <= 6; i += 2) {
 
-        if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
-
-          return "Esta combinación de dados no es una Escalera Par";
+        if (player.dadosJugador.getD1() == i) {
+          valord1 = true;
+        } else if (player.dadosJugador.getD2() == i) {
+          valord2 = true;
+        } else if (player.dadosJugador.getD3() == i) {
+          valord2 = true;
         } else {
-          player.p.set(4, 20);
-          player.p.set(13, player.totalPtos());
-          return "Esta combinación es una Escalera Par, 20 ptos";
+          return "Esta combinación de dados no es una Escalera Par";
         }
+
       }
+      if (valord3 && valord1 && valord2) {
+        player.p.set(4, 20);
+        player.p.set(13, player.totalPtos());
+        return "Esta combinación es una Escalera Par, 20 ptos";
+      }
+
     }
 
     return "Casilla ocupada";
@@ -222,7 +254,7 @@ public class Partida {
   public static String EscaleraImpar(Jugador player) {
     if (casillaVacia(player, 5)) {
 
-      for (int i = 2; i <= 6; i += 2) {
+      for (int i = 1; i <= 5; i += 2) {
 
         if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() != i) {
 
@@ -293,8 +325,8 @@ public class Partida {
 
     if (casillaVacia(player, casilla)) {
       player.p.set(casilla, n);
-      player.p.set(13, player.totalPtos());
-      return "Casilla Risco completada " + n + " ptos";
+      player.p.set(puntos, player.totalPtos());
+      return "Casilla" + n + "completada con " + n + " ptos";
     } else {
       return "Casilla ocupada";
     }
@@ -302,6 +334,6 @@ public class Partida {
 
   @Override
   public String toString() {
-    return "\n Partida ronda=" + ronda + ", nJugadores=" + nJugadores ;
+    return "\n Partida ronda=" + ronda + ", nJugadores=" + nJugadores;
   }
 }
