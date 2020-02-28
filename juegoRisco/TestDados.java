@@ -22,40 +22,35 @@ public class TestDados {
       partida.crearJugadores(i, nombreTmp);
     }
     
-    /* BORRAR ¿? ¿Llamadas de prueba?
- 
-    Dados d1 = new Dados();
-
-    System.out.println(d1);
-
-    System.out.println("Indique cuantos dados vas a cambiar:");
-    int dadosCambiar = sc.nextInt();
-
-    d1.cambiarDados(dadosCambiar);
-    System.out.println(d1);
-    */
     
-    //int jugadorActual;
-    // Asignación temporal, hay que implementar una forma de saber cual es el jugador que
-    // está jugando.
-    //jugadorActual = 1;
-    
-    // para recorrer los 13 juegos
+    // Para recorrer los 13 juegos
     for (int i = 0; i < 13; i++) {
     	for (int j = 0; j < nJugadores; j++) {
     		partida.muestraTablero();
     		System.out.println();
     		
-    		System.out.println("\n\nTurno " + (i + 1) + " del Jugador " + partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1))).nombre);
-    		System.out.println("\nEn esta tirada obtienes:\n" + Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1)))));
-			System.out.println("Menu inicial indique la opción que quiere realizar: \n "
+    		System.out.print("\n\nTurno " + (i + 1) + " del Jugador " + partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1))).nombre);
+    		System.out.print("\nEn esta tirada obtienes:\n" + Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1)))));
+    		
+
+        Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1)));
+        
+    		System.out.print("\n¿Quieres cambiar algún dado? [s/n]: ");
+    		String cambioDado = sc.next();
+    		if (cambioDado.equals("s")) {
+    		  System.out.print("¿Cuántos dados quieres cambiar?: ");
+          int nDadosCambiar = sc.nextInt();
+          player.dadosJugador.cambiarDados(nDadosCambiar);
+          System.out.print(player.dadosJugador + "\n");
+    		}
+    		
+    		System.out.println("Menu inicial indique la opción que quiere realizar: \n "
 		          + "[1]Risco \n [2]Trece \n [3]Escalera Mayor \n [4]Escalera Menor \n "
 		          + "[5]Escalera par \n [6]Escalera impar \n [7]Trio \n [8]Seis \n " + "[9]Cinco \n "
-		          + "[10]Cuatro  \n [11]Tres  \n [12]Dos  \n [13]Ases \n [14]Cambiar dados");
+		          + "[10]Cuatro  \n [11]Tres  \n [12]Dos  \n [13]Ases ");
 		
 	      	int opcion;
 	      	opcion = sc.nextInt();
-          Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1)));
 	
 		      switch (opcion) {
 		      case 1:
@@ -108,17 +103,9 @@ public class TestDados {
 		      case 13:
             Partida.numero(player, 1);
 		        break;
-		        
-		      case 14:
-		        System.out.println("¿Cuántos dados quieres cambiar?: ");
-		        int nDadosCambiar = sc.nextInt();
-		        player.dadosJugador.cambiarDados(nDadosCambiar);
-		        System.out.println(player.dadosJugador);
-		        j--;
-		        break;
 		
 		      default:
-		    	  System.out.println("opción no valida");
+		    	  System.out.println("Opción no valida");
 		    	  j--;
 		        break;
 		      }
