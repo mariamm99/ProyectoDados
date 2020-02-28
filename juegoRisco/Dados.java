@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class Dados {
   Scanner sc = new Scanner(System.in);
 
-  static int d1;
-  static int d2;
-  static int d3;
+  int d1;
+  int d2;
+  int d3;
 
   public Dados() {
 
@@ -16,7 +16,7 @@ public class Dados {
     setD3(d3);
   }
 
-  public static int getD1() {
+  public int getD1() {
     return d1;
   }
 
@@ -24,7 +24,7 @@ public class Dados {
     this.d1 = (int) (Math.random() * 6 + 1);
   }
 
-  public static int getD2() {
+  public int getD2() {
     return d2;
   }
 
@@ -32,7 +32,7 @@ public class Dados {
     this.d2 = (int) (Math.random() * 6 + 1);
   }
 
-  public static int getD3() {
+  public int getD3() {
 
     return d3;
   }
