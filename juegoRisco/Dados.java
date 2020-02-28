@@ -43,7 +43,7 @@ public class Dados {
 
   void cambiarDados(int nDadosCambiar) {
 
-    if (nDadosCambiar > 1) { //Esto se puede omitir??
+    if (nDadosCambiar > 1) {
       if (nDadosCambiar > 3) {
 
         System.out.println("Solo puedes cambiar 3 dados");

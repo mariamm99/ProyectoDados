@@ -48,10 +48,10 @@ public class TestDados {
     		
     		System.out.println("\n\nTurno " + (i + 1) + " del Jugador " + partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1))).nombre);
     		System.out.println("\nEn esta tirada obtienes:\n" + Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j+1)))));
-			System.out.println("Menu inicial indique la letra de lo que quiere realizar: \n "
+			System.out.println("Menu inicial indique la opción que quiere realizar: \n "
 		          + "[1]Risco \n [2]Trece \n [3]Escalera Mayor \n [4]Escalera Menor \n "
 		          + "[5]Escalera par \n [6]Escalera impar \n [7]Trio \n [8]Seis \n " + "[9]Cinco \n "
-		          + "[10]Cuatro  \n [11]Tres  \n [12]Dos  \n [13]Ases \n   ");
+		          + "[10]Cuatro  \n [11]Tres  \n [12]Dos  \n [13]Ases \n [14]Cambiar dados");
 		
 	      	int opcion;
 	      	opcion = sc.nextInt();
@@ -106,6 +106,13 @@ public class TestDados {
 		
 		      case 13:
             Partida.numero(player, player.dadosJugador.d1);
+		        break;
+		        
+		      case 14:
+		        System.out.println("¿Cuántos dados quieres cambiar?: ");
+		        int nDadosCambiar = sc.nextInt();
+		        player.dadosJugador.cambiarDados(nDadosCambiar);
+		        System.out.println(player.dadosJugador);
 		        break;
 		
 		      default:
