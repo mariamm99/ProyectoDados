@@ -8,8 +8,8 @@ public class Partida {
   Scanner sc = new Scanner(System.in);
 
   // Atributos
-  int ronda;
-  int nJugadores;
+  private int ronda;
+  private int nJugadores;
 
   ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 
@@ -40,8 +40,6 @@ public class Partida {
     jugadores.add(jugador);
   }
 
-
-
   public void cambiarDados() {
 
   }
@@ -61,7 +59,7 @@ public class Partida {
     for (int i = 0; i < nJugadores; i++) {
       for (int j = 0; j <= 14; j++) {
         if (j == 0) {
-          System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(i + 1))).nombre + "\t"); 
+          System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(i + 1))).getNombre() + "\t");
         } else {
           System.out.print(jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(j - 1) + "\t");
         }
@@ -115,7 +113,7 @@ public class Partida {
         return "Casilla Trece completada, 26 ptos";
       } else {
         return "Esta combinación de números no es un trece";
-       
+
       }
     } else {
       return "Casilla ocupada";
@@ -145,7 +143,7 @@ public class Partida {
           return "Esta combinación de dados no es una Escalera Mayor";
         }
       }
-      
+
       if (valord3 && valord1 && valord2) {
         player.p.set(2, 20);
         player.p.set(13, player.totalPtos());
@@ -163,12 +161,11 @@ public class Partida {
     boolean valord1 = false;
     boolean valord2 = false;
     boolean valord3 = false;
-    
+
     if (casillaVacia(player, 3)) {
 
       for (int i = 1; i <= 3; i++) {
 
-        
         if (player.dadosJugador.getD1() == i) {
           valord1 = true;
         } else if (player.dadosJugador.getD2() == i) {
@@ -178,14 +175,14 @@ public class Partida {
         } else {
           return "Esta combinación de dados no es una Escalera Menor";
 
-        }  
-      }
-      
-        if (valord3 && valord1 && valord2) {
-          player.p.set(3, 20);
-          player.p.set(13, player.totalPtos());
-          return "Esta combinación es una Escalera Menor, 20 ptos";
         }
+      }
+
+      if (valord3 && valord1 && valord2) {
+        player.p.set(3, 20);
+        player.p.set(13, player.totalPtos());
+        return "Esta combinación es una Escalera Menor, 20 ptos";
+      }
     }
     return "Casilla ocupada";
 
@@ -275,7 +272,7 @@ public class Partida {
 
   static String numero(Jugador player, int n) {
     int puntos = 0;
-    
+
     if (player.dadosJugador.getD1() == n) {
       puntos += n;
     }
@@ -289,7 +286,7 @@ public class Partida {
     int casilla = 0;
     if (n == 6) {
       casilla = 7;
-     
+
     } else if (n == 5) {
       casilla = 8;
     } else if (n == 4) {

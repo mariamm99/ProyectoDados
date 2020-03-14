@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class Jugador {
   // Atributos ///////
-  String nombre;
+  private String nombre;
   private int nj; // Número de Jugador, como si fuera un código
   ArrayList<Integer> p = new ArrayList<Integer>(); // ArrayList de puntuaciones
   Dados dadosJugador; // ArrayList de dados ESTO NO ES ARRAYLIST!! es array solo by María
