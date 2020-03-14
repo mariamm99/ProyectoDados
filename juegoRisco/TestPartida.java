@@ -1,8 +1,8 @@
-package ProyectoDados.juegoRisco;
+//package ProyectoDados.juegoRisco;
 
 import java.util.Scanner;
 
-public class TestDados {
+public class TestPartida {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
@@ -15,7 +15,6 @@ public class TestDados {
     nJugadores = sc.nextInt();
     // Crear una partida ////////
     Partida partida = new Partida(nJugadores);
-    // Creo jugadores, llamando a crearJugadores en Partida
     for (int i=1;i<=nJugadores;i++) {
       System.out.print("Introduce el nombre del jugador " + i + ": ");
       nombreTmp = sc.next();
@@ -38,10 +37,11 @@ public class TestDados {
     		System.out.print("\n¿Quieres cambiar algún dado? [s/n]: ");
     		String cambioDado = sc.next();
     		if (cambioDado.equals("s")) {
-    		  System.out.print("¿Cuántos dados quieres cambiar?: ");
-          int nDadosCambiar = sc.nextInt();
-          player.dadosJugador.cambiarDados(nDadosCambiar);
-          System.out.print(player.dadosJugador + "\n");
+    			System.out.print("¿Cuántos dados quieres cambiar?: ");
+          		int nDadosCambiar = sc.nextInt();
+          		System.out.println(player.dadosJugador.cambiarDados(nDadosCambiar));
+			  
+				  //System.out.print(player.dadosJugador + "\n");
     		}
     		
     		System.out.println("Menu inicial indique la opción que quiere realizar: \n "

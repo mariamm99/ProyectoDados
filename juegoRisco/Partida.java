@@ -1,4 +1,4 @@
-package ProyectoDados.juegoRisco;
+//package ProyectoDados.juegoRisco;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -40,10 +40,7 @@ public class Partida {
     jugadores.add(jugador);
   }
 
-//  public int numeroJugador(Jugador player) {
-//    return player.getNj();
-//  }
-  // PRUEBA PARA SACAR EL JUGADOR DE OTRA FORMA A LO DE INDEXOF...
+
 
   public void cambiarDados() {
 
@@ -64,18 +61,7 @@ public class Partida {
     for (int i = 0; i < nJugadores; i++) {
       for (int j = 0; j <= 14; j++) {
         if (j == 0) {
-          System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(i + 1))).nombre + "\t"); // Del ArrayList
-                                                                                                       // de jugadores
-                                                                                                       // obtén j y de
-                                                                                                       // ese jugador
-                                                                                                       // saca i del
-                                                                                                       // ArrayList de
-                                                                                                       // puntuaciones
-                                                                                                       // (p). ¿Sería i
-                                                                                                       // u tendríamos
-                                                                                                       // que hacer otro
-                                                                                                       // bucle? EL 2 ES
-                                                                                                       // TEMPORAL
+          System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(i + 1))).nombre + "\t"); 
         } else {
           System.out.print(jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(j - 1) + "\t");
         }
@@ -85,16 +71,7 @@ public class Partida {
   }
 
   public static boolean casillaVacia(Jugador player, int casilla) {
-    /*
-     * Cada juego, pasa como argumento de casillaVacia el número de posición en el
-     * ArrayList, por ejemplo, en un Risco, se llamaría a casillaVacia(0)
-     */
-    /*
-     * Cambiar nJugador por el que sea... ¿Como?
-     */
-    // if (jugadores.get(jugadores.indexOf(new
-    // Jugador(1))).p.get(casilla).equals(null)) { // En el ArrayList, null es
-    // vacío, es decir, sin puntos
+
     if (player.p.get(casilla) == null) {
       return true;
     } else {

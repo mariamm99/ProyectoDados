@@ -1,4 +1,4 @@
-package ProyectoDados.juegoRisco;
+//package ProyectoDados.juegoRisco;
 import java.util.ArrayList;
 
 public class Jugador {
@@ -13,7 +13,7 @@ public class Jugador {
     this.nj = nj; // Número de jugador
     this.nombre = nombre; // Nombre de jugador
     this.dadosJugador = new Dados(); // Genero un objeto Dado, el dado a su vez contiene tres dados (d1, d2, d3)
-    p.add(null); // 0 Risco Para añadir puntuación → p.add(0, puntuación);
+    p.add(null); // 0 Risco 
     p.add(null); // 1 Trece
     p.add(null); // 2 Escalera mayor
     p.add(null); // 3 Escalera menor

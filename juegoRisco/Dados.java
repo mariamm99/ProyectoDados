@@ -1,26 +1,29 @@
-package ProyectoDados.juegoRisco;
+//package ProyectoDados.juegoRisco;
 
 import java.util.Scanner;
 
 public class Dados {
   Scanner sc = new Scanner(System.in);
 
-  int d1;
-  int d2;
-  int d3;
+  private int d1;
+  private int d2;
+  private int d3;
 
+  /**
+   * Constructor de dados.
+   */
   public Dados() {
 
-    setD1(d1);
-    setD2(d2);
-    setD3(d3);
+    setD1();
+    setD2();
+    setD3();
   }
 
   public int getD1() {
     return d1;
   }
 
-  public void setD1(int d1) {
+  public void setD1() {
     this.d1 = (int) (Math.random() * 6 + 1);
   }
 
@@ -28,7 +31,7 @@ public class Dados {
     return d2;
   }
 
-  public void setD2(int d2) {
+  public void setD2() {
     this.d2 = (int) (Math.random() * 6 + 1);
   }
 
@@ -37,53 +40,61 @@ public class Dados {
     return d3;
   }
 
-  public void setD3(int d3) {
+  public void setD3() {
     this.d3 = (int) (Math.random() * 6 + 1);
   }
 
-  void cambiarDados(int nDadosCambiar) {
+  /**
+   * Cambiar dados. al tirar los dados puedes solicitar cambiar 1,2 o los 3 dados.
+   * 
+   * @param nDadosCambiar
+   */
+  String cambiarDados(int nDadosCambiar) {
 
- 
-     if (nDadosCambiar > 3) {
-
+    if (nDadosCambiar > 2) {
+      if (nDadosCambiar > 3) {
         System.out.println("Solo puedes cambiar 3 dados");
         nDadosCambiar = 3;
-        System.out.println("Continuemos con la partida.");
-
       }
+      System.out.println("Continuemos con la partida.");
+      setD1();
+      setD2();
+      setD3();
 
-      int dado;
-      boolean cambiod1 = true;
-      boolean cambiod2 = true;
-      boolean cambiod3 = true;
-      for (int i = 0; i < nDadosCambiar; i++) {
+      return toString();
 
-        System.out.println("Que dado quiere cambiar, 1, 2 o 3");
-        dado = sc.nextInt();
+    }
 
-        if (dado == 1 && cambiod1) {
-          setD1(d1);
+    int dado;
+    boolean cambiod1 = true;
+    boolean cambiod2 = true;
+    boolean cambiod3 = true;
+    for (int i = 0; i < nDadosCambiar; i++) {
 
-          cambiod1 = false;
-        } else if (dado == 2 && cambiod2) {
-          setD2(d2);
+      System.out.println("Que dado quiere cambiar, 1, 2 o 3");
+      dado = sc.nextInt();
 
-          cambiod2 = false;
-        } else if (dado == 3 && cambiod3) {
-          setD3(d3);
+      if (dado == 1 && cambiod1) {
+        setD1();
 
-          cambiod3 = false;
-        } else if (!cambiod1 || !cambiod2 || !cambiod3) {
-          System.out.println("Dado " + dado + " ya ha sido cambiado introduzca otro");
-          --i;
-        } else {
-          System.out.println("Dado " + dado + " no existe introduzca otro");
-          --i;
-        }
+        cambiod1 = false;
+      } else if (dado == 2 && cambiod2) {
+        setD2();
+
+        cambiod2 = false;
+      } else if (dado == 3 && cambiod3) {
+        setD3();
+
+        cambiod3 = false;
+      } else if (!cambiod1 || !cambiod2 || !cambiod3) {
+        System.out.println("Dado " + dado + " ya ha sido cambiado introduzca otro");
+        --i;
+      } else {
+        System.out.println("Dado " + dado + " no existe introduzca otro");
+        --i;
       }
-
-   
-System.out.println("Dados definitivos");
+    }
+    return toString();
   }
 
   @Override
