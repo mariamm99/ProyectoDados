@@ -65,15 +65,15 @@ public class Jugador {
   public void setNj(int nj) {
     this.nj = nj;
   }
-
-  public int totalPtos() {
-    int tmp = 0; // Variable que almacena todos los puntos
+  int tmp=0; // Variable que almacena todos los puntos
+  public int totalPtos(int i) {
+    
     boolean hayPtos = false;
-    for (int i=0;i<=13;i++) {
+    
       if (p.get(i) != null) {
           tmp += p.get(i);
           hayPtos = true;
-      }
+      
     }
     if (hayPtos) {
       return tmp;

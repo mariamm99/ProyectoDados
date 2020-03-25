@@ -1,11 +1,10 @@
-
 //package ProyectoDados.juegoRisco;
 import utiles.*;
 import java.util.Scanner;
 
 public class TestPartida {
 
-	static Menu menu = new Menu("Menu inicial indique la opción que quiere realizar:",
+	static Menu menu = new Menu(" Indique la opci�n que quiere realizar:",
 			new String[] { "Risco", " Trece", "Escalera Mayor ", "Escalera Menor ", "Escalera par", " Escalera impar",
 					"Trio ", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases" });
 
@@ -26,18 +25,22 @@ public class TestPartida {
 			partida.crearJugadores(i, nombreTmp);
 		}
 
-		// Para recorrer los 13 juegos
-		for (int i = 0; i < 13; i++) {
-			for (int j = 0; j < nJugadores; j++) {
+		// Para recorrer las 13 rondas
+		for (int i = 1; i <= 13; i++) {
+
+			/**
+			 * Recorremos todos los jugadores durante cada ronda
+			 */
+			for (int j = 1; j <= nJugadores; j++) {
 				partida.muestraTablero();
 				System.out.println();
 
-				System.out.print("\n\nTurno " + (i + 1) + " del Jugador "
-						+ partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j + 1))).getNombre());
+				System.out.print("\n\nTurno " + i + " del Jugador "
+						+ partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j ))).getNombre());
 				System.out.print("\nEn esta tirada obtienes:\n"
-						+ Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j + 1)))));
+						+ Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j)))));
 
-				Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j + 1)));
+				Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j)));
 
 				System.out.print("\n¿Quieres cambiar algún dado? [s/n]: ");
 				String cambioDado = sc.next();
@@ -108,7 +111,7 @@ public class TestPartida {
 				}
 			}
 		}
-
+		partida.muestraTablero();
 		sc.close();
 	}
 
