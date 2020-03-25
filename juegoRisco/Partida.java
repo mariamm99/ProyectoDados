@@ -1,11 +1,8 @@
 //package ProyectoDados.juegoRisco;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Partida {
-  // Scanner
-  Scanner sc = new Scanner(System.in);
 
   // Atributos
   private int ronda;
@@ -40,12 +37,8 @@ public class Partida {
     jugadores.add(jugador);
   }
 
-  public void cambiarDados() {
-
-  }
-
   public static Dados tirarDados(Jugador player) {
-    player.setDadosJugador(new Dados()); // No sé si funcionará, probar
+    player.setDadosJugador(new Dados());
     return player.dadosJugador;
   }
 
@@ -153,7 +146,7 @@ public class Partida {
       if (valord1 && valord2 && valord3) {
         player.p.set(2, 20);
         player.p.set(13, player.totalPtos(2));
-        return "Esta combinaci�n es una Escalera Mayor, 20 ptos";
+        return "Esta combinación es una Escalera Mayor, 20 ptos";
       }
     }
 

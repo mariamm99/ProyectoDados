@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class TestPartida {
 
-	static Menu menu = new Menu(" Indique la opci�n que quiere realizar:",
-			new String[] { "Risco", " Trece", "Escalera Mayor ", "Escalera Menor ", "Escalera par", " Escalera impar",
-					"Trio ", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases" });
+	static Menu menu = new Menu("Indique la opción que quiere realizar:",
+			new String[] { "Risco", "Trece", "Escalera Mayor", "Escalera Menor ", "Escalera par", "Escalera impar",
+					"Trio", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases"});
 
-	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+	public static void main(String[] args) throws Exception {
+	  Scanner sc = new Scanner(System.in);
 
 		int nJugadores;
 
@@ -32,24 +32,17 @@ public class TestPartida {
 			 * Recorremos todos los jugadores durante cada ronda
 			 */
 			for (int j = 1; j <= nJugadores; j++) {
-				partida.muestraTablero();
-				System.out.println();
-
-				System.out.print("\n\nTurno " + i + " del Jugador "
+				Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j)));
+		    
+				System.out.print("\n\nTurno " + i + " del jugador "
 						+ partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j ))).getNombre());
-				System.out.print("\nEn esta tirada obtienes:\n"
+				System.out.println("\nEn esta tirada obtienes:\n"
 						+ Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j)))));
 
-				Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j)));
-
-				System.out.print("\n¿Quieres cambiar algún dado? [s/n]: ");
-				String cambioDado = sc.next();
-				if (cambioDado.equals("s")) {
-					System.out.print("¿Cuántos dados quieres cambiar?: ");
-					int nDadosCambiar = sc.nextInt();
+				String cambioDado = Teclado.leerCadena("\n¿Quieres cambiar algún dado? [S/N]: ").toUpperCase();
+				if (cambioDado.equals("S")) {
+					int nDadosCambiar = Teclado.leerEntero("¿Cuántos dados quieres cambiar?: ");
 					System.out.println(player.dadosJugador.cambiarDados(nDadosCambiar));
-
-					// System.out.print(player.dadosJugador + "\n");
 				}
 
 				switch (menu.gestionar()) {
@@ -105,14 +98,20 @@ public class TestPartida {
 						break;
 
 					default:
-						System.out.println("Opción no valida");
+						System.out.println("Opción no valida.");
 						j--;
 						break;
 				}
+				
+				partida.muestraTablero();
+        System.out.println();
+        System.out.print("\nPulsa Intro para seguir o e para exportar tus datos actuales[Intro/e]: ");
+        String exporto = sc.nextLine().toUpperCase();
+        if (exporto.equals("E")) {
+            player.guardaDatos();
+          }
 			}
 		}
-		partida.muestraTablero();
-		sc.close();
 	}
 
 }

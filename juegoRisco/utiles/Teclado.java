@@ -15,12 +15,12 @@ public class Teclado {
     public static int leerEntero(final String mensaje) throws InputMismatchException {
         while (true) {
             int entero;
-            System.out.println(mensaje);
+            System.out.print(mensaje);
             try {
                 entero = sc.nextInt();
                 return entero;
             } catch (final InputMismatchException e) {
-                System.err.println("dato erroneo, debe ser un número entero");
+                System.err.println("Dato erroneo, debe ser un número entero.");
                 sc.next();
             }
         }
@@ -34,7 +34,7 @@ public class Teclado {
     public static String leerCadena(final String mensaje) {
 
         String cadena;
-        System.out.println(mensaje);
+        System.out.print(mensaje);
         cadena = sc.next();
         return cadena;
     }
@@ -48,11 +48,10 @@ public class Teclado {
     public float leerFloat(final String mensaje) throws InputMismatchException {
         float decimal;
         while (true) {
-            System.out.println(mensaje);
+            System.out.print(mensaje);
             try {
                 decimal = sc.nextFloat();
                 return decimal;
-
             } catch (final InputMismatchException i) {
                 sc.next();
                 System.err.println("dato erroneo, debe ser un número ");
