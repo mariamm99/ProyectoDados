@@ -1,5 +1,9 @@
 //package ProyectoDados.juegoRisco;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Jugador {
   // Atributos ///////
@@ -80,6 +84,53 @@ public class Jugador {
     } else {
       return 0;
     }
+  }
+  
+  /**
+   * Método para crear archivos para la exportación de datos.
+   * 
+   * @param nombre
+   */
+  private BufferedWriter creaArchivo() {
+    BufferedWriter manejadorExp = null;
+    try {
+      manejadorExp = new BufferedWriter(new FileWriter(this.nombre + ".txt"));
+    } catch (Exception e) {
+      System.err.println("Error, no ha sido escribir en datos.txt");
+      System.exit(2);
+    }
+    return manejadorExp;
+  }
+  
+  public void guardaDatos() throws Exception {
+    BufferedWriter archivo = creaArchivo();
+    // Nombre de jugador
+    archivo.write("Nombre de jugador: " + this.nombre);
+    archivo.newLine();
+    archivo.write("---------------------");
+    archivo.newLine();
+    
+    // Dados
+    archivo.write("\nDados actuales de " + this.nombre);
+    archivo.newLine();
+    archivo.write(dadosJugador.toString());
+    archivo.newLine();
+    
+    // Puntuacion
+    archivo.write("\nPuntuación actual de " + this.nombre);
+    archivo.newLine();
+    String[] juegos = {"\nRisco → ", "Trece → ", "E.Mayor → ", "E.Menor → ", "E.Par → ", "E.Impar → ", "Trio → ", "Seis → ", "Cinco → ",
+        "Cuatro → ", "Tres → ", "Dos → ", "As → ", "Total → "};
+    for (int i=0;i<=13;i++) {
+      archivo.write(juegos[i] + p.get(i));
+      archivo.newLine();
+    }
+    
+    // Final
+    java.util.Date fecha = new Date();
+    archivo.write("\nDatos exportados a: " + fecha);
+    archivo.close();
+    System.out.println("Datos exportados.");
   }
   
 

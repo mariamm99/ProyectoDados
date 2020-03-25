@@ -1,11 +1,10 @@
 package utiles;
 import java.util.InputMismatchException;
-import java.util.Scanner;
 
 public class Menu {
     private final String titulo;
     private final String opciones[];
-    private int numOpciones = 13;
+    private int numOpciones;
 
     /**
      * Constructor.
@@ -36,7 +35,7 @@ public class Menu {
      */
     private void mostrar() {
         int i = 1;
-        System.out.println("**" + titulo);
+        System.out.println("\n**" + titulo);
         for (final String elemento : opciones)
             System.out.println("(" + (i++) + ") " + elemento);
     }
@@ -49,7 +48,7 @@ public class Menu {
     private int recogerOpcion() {
         int opcion;
         do {
-            opcion = Teclado.leerEntero("indique la opción");
+            opcion = Teclado.leerEntero("Indique la opción: ");
         } while (opcion < 1 || opcion > numOpciones);
         return opcion;
     }

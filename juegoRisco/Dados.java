@@ -1,9 +1,8 @@
 //package ProyectoDados.juegoRisco;
 
-import java.util.Scanner;
+import utiles.Teclado;
 
 public class Dados {
-  Scanner sc = new Scanner(System.in);
 
   private int d1;
   private int d2;
@@ -71,8 +70,7 @@ public class Dados {
     boolean cambiod3 = true;
     for (int i = 0; i < nDadosCambiar; i++) {
 
-      System.out.println("Que dado quiere cambiar, 1, 2 o 3");
-      dado = sc.nextInt();
+      dado = Teclado.leerEntero("¿Que dado quiere cambiar? 1, 2 o 3: ");
 
       if (dado == 1 && cambiod1) {
         setD1();
@@ -99,6 +97,6 @@ public class Dados {
 
   @Override
   public String toString() {
-    return "Dado 1: " + getD1() + " Dado 2: " + getD2() + " Dado 3: " + getD3();
+    return "Dado 1: " + getD1() + "\nDado 2: " + getD2() + "\nDado 3: " + getD3();
   }
 }
