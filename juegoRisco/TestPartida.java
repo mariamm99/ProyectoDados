@@ -82,7 +82,6 @@ public class TestPartida {
 
 					case 10:
 						Partida.numero(player, 4);
-
 						break;
 
 					case 11:
@@ -112,6 +111,7 @@ public class TestPartida {
           }
 			}
 		}
+		sc.close();
 	}
 
 }

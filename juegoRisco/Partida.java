@@ -32,16 +32,32 @@ public class Partida {
     this.nJugadores = nJugadores;
   }
 
+  /**
+   * Método para crear jugadores para la partida.
+   * 
+   * @param nj (Número de jugadores)
+   * @param nombre (Nombre del jugador)
+   */
   public void crearJugadores(int nj, String nombre) {
     Jugador jugador = new Jugador(nj, nombre);
     jugadores.add(jugador);
   }
 
+  /**
+   * Método estático para que el jugador tire sus dados.
+   * 
+   * @param Jugador
+   * @return
+   */
   public static Dados tirarDados(Jugador player) {
     player.setDadosJugador(new Dados());
     return player.dadosJugador;
   }
 
+  /**
+   * Método para mostrar por pantalla el tablero de la partida actual.
+   * 
+   */
   public void muestraTablero() {
     String[] juegos = { "\t" + "Risco", "Trece", "E.Mayor", "E.Menor", "E.Par", "E.Impar", "Trio", "Seis", "Cinco",
         "Cuatro", "Tres", "Dos", "As", "Total" };
@@ -54,15 +70,25 @@ public class Partida {
         if (j == 0) {
           System.out.print("\n" + jugadores.get(jugadores.indexOf(new Jugador(i + 1))).getNombre() + "\t");
         } else {
-          System.out.print(jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(j - 1) + "\t");
+          if (jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(j - 1) != null) {
+            System.out.print(jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(j - 1) + "\t");
+          } else {
+            System.out.print("\t");
+          }
         }
       }
     }
 
   }
 
+  /**
+   * Método para comprobar si una casilla está vacía o no.
+   * 
+   * @param Jugador
+   * @param casilla
+   * @return boolean
+   */
   public static boolean casillaVacia(Jugador player, int casilla) {
-
     if (player.p.get(casilla) == null) {
       return true;
     } else {
@@ -70,10 +96,12 @@ public class Partida {
     }
   }
 
-  /*
-   * Metodo para comprobacion del Risco
+  /**
+   * Método de comprobación: Risco.
+   * 
+   * @param player
+   * @return
    */
-
   public static String Risco(Jugador player) {
     if (casillaVacia(player, 0)) {
       if ((player.dadosJugador.getD1() == player.dadosJugador.getD2()
@@ -96,10 +124,12 @@ public class Partida {
 
   }
 
-  /*
-   * Metodo para comprobacion del Trece
+  /**
+   * Método de comprobación: Trece.
+   * 
+   * @param player
+   * @return
    */
-
   public static String Trece(Jugador player) {
     if (casillaVacia(player, 1)) {
       if (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13) {
@@ -118,10 +148,12 @@ public class Partida {
 
   }
 
-  /*
-   * Metodo para comprobacion de la Escalera Mayor
+  /**
+   * Método de comprobación: Escalera Mayor.
+   * 
+   * @param player
+   * @return
    */
-
   public static String EscaleraMayor(Jugador player) {
     boolean valord1 = false;
     boolean valord2 = false;
@@ -153,8 +185,11 @@ public class Partida {
     return "Casilla ocupada";
   }
 
-  /*
-   * Metodo para comprobacion de la Escalera Menor
+  /**
+   * Método de comprobación: Escalera Menor.
+   * 
+   * @param player
+   * @return
    */
   public static String EscaleraMenor(Jugador player) {
     boolean valord1 = false;
@@ -189,8 +224,11 @@ public class Partida {
 
   }
 
-  /*
-   * Metodo para comprobacion de la Escalera Par
+  /**
+   * Método de comprobación: Escalera Par.
+   * 
+   * @param player
+   * @return
    */
   public static String EscaleraPar(Jugador player) {
     boolean valord1 = false;
@@ -225,8 +263,11 @@ public class Partida {
     return "Casilla ocupada";
   }
 
-  /*
-   * Metodo para comprobacion de la Escalera Impar
+  /**
+   * Método de comprobación: Escalera Impar.
+   * 
+   * @param player
+   * @return
    */
   public static String EscaleraImpar(Jugador player) {
     boolean valord1 = false;
@@ -246,14 +287,14 @@ public class Partida {
         } else {
           player.p.set(5,0);
           player.p.set(13, player.totalPtos(5));
-          return "Esta combinación de dados no es una Escalera Par";
+          return "Esta combinación de dados no es una escalera impar";
         }
 
       }
       if (valord1 && valord2 && valord3) {
         player.p.set(5, 20);
         player.p.set(13, player.totalPtos(5));
-        return "Esta combinación es una Escalera Par, 20 ptos";
+        return "Esta combinación es una escalera impar, 20 ptos";
       }
 
     }
@@ -261,7 +302,13 @@ public class Partida {
     return "Casilla ocupada";
   }
 
-  static String Trio(Jugador player) {
+  /**
+   * Método de comprobación: Trío.
+   * 
+   * @param player
+   * @return
+   */
+  public static String Trio(Jugador player) {
     if (casillaVacia(player, 6)) {
       if (player.dadosJugador.getD1() == player.dadosJugador.getD2()
           && player.dadosJugador.getD1() == player.dadosJugador.getD3()) {
@@ -283,11 +330,13 @@ public class Partida {
   }
 
   /**
-   * La puntuación por números puede ser la misma función e indicarle el número
-   * que es.
+   * Método de comprobación: Seis, cinco, cuatro, tres, dos, ases.
+   * 
+   * @param player
+   * @param n (Número de juego, p. ej 5 en refencia al cinco)
+   * @return
    */
-
-  static String numero(Jugador player, int n) {
+  public static String numero(Jugador player, int n) {
     int puntos = 0;
 
     if (player.dadosJugador.getD1() == n) {

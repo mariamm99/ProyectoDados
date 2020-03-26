@@ -122,7 +122,11 @@ public class Jugador {
     String[] juegos = {"\nRisco → ", "Trece → ", "E.Mayor → ", "E.Menor → ", "E.Par → ", "E.Impar → ", "Trio → ", "Seis → ", "Cinco → ",
         "Cuatro → ", "Tres → ", "Dos → ", "As → ", "Total → "};
     for (int i=0;i<=13;i++) {
-      archivo.write(juegos[i] + p.get(i));
+      if (p.get(i) != null) {
+        archivo.write(juegos[i] + p.get(i));
+      } else {
+        archivo.write(juegos[i] + "\t");
+      }
       archivo.newLine();
     }
     

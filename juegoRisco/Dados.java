@@ -44,9 +44,10 @@ public class Dados {
   }
 
   /**
-   * Cambiar dados. al tirar los dados puedes solicitar cambiar 1,2 o los 3 dados.
+   * Cambiar dados. al tirar los dados puedes solicitar cambiar 1, 2 o los 3 dados.
    * 
    * @param nDadosCambiar
+   * @return
    */
   String cambiarDados(int nDadosCambiar) {
 
