@@ -102,10 +102,13 @@ public class Jugador {
     return manejadorExp;
   }
   
-  public void guardaDatos() throws Exception {
-    BufferedWriter archivo = creaArchivo();
+  public void guardaDatos()  {
+  
     // Nombre de jugador
-    archivo.write("Nombre de jugador: " + this.nombre);
+    try {
+      BufferedWriter archivo = creaArchivo();
+      archivo.write("Nombre de jugador: " + this.nombre);
+    
     archivo.newLine();
     archivo.write("---------------------");
     archivo.newLine();
@@ -135,6 +138,10 @@ public class Jugador {
     archivo.write("\nDatos exportados a: " + fecha);
     archivo.close();
     System.out.println("Datos exportados.");
+
+  } catch (IOException e) {
+    System.err.println("error en la lectura del fichero");
+      }
   }
   
 
