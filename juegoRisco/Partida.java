@@ -103,25 +103,19 @@ public class Partida {
    * @return
    */
   public static String Risco(Jugador player) {
-    if (casillaVacia(player, 0)) {
-      if ((player.dadosJugador.getD1() == player.dadosJugador.getD2()
-          || player.dadosJugador.getD1() == player.dadosJugador.getD3()
-          || player.dadosJugador.getD2() == player.dadosJugador.getD3())
-          && (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13)) {
+    if ((player.dadosJugador.getD1() == player.dadosJugador.getD2()
+        || player.dadosJugador.getD1() == player.dadosJugador.getD3()
+        || player.dadosJugador.getD2() == player.dadosJugador.getD3())
+        && (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13)) {
 
-        player.p.set(0, 50);
-        player.p.set(13, player.totalPtos(0));
-        return "Casilla Risco completada, 50 ptos";
-      } else {
-        player.p.set(0,0);
-        player.p.set(13, player.totalPtos(0));
-        return "Esta combinación de números no es un risco";
-      }
-
+      player.p.set(0, 50);
+      player.p.set(13, player.totalPtos(0));
+      return "Casilla Risco completada, 50 ptos";
     } else {
-      return "Casilla ocupada";
+      player.p.set(0,0);
+      player.p.set(13, player.totalPtos(0));
+      return "Esta combinación de números no es un risco";
     }
-
   }
 
   /**
@@ -131,21 +125,16 @@ public class Partida {
    * @return
    */
   public static String Trece(Jugador player) {
-    if (casillaVacia(player, 1)) {
-      if (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13) {
-        player.p.set(1, 26);
-        player.p.set(13, player.totalPtos(1));
-        return "Casilla Trece completada, 26 ptos";
-      } else {
-        player.p.set(1,0);
-        player.p.set(13, player.totalPtos(1));
-        return "Esta combinación de números no es un trece";
-
-      }
+    if (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13) {
+      player.p.set(1, 26);
+      player.p.set(13, player.totalPtos(1));
+      return "Casilla Trece completada, 26 ptos";
     } else {
-      return "Casilla ocupada";
-    }
+      player.p.set(1,0);
+      player.p.set(13, player.totalPtos(1));
+      return "Esta combinación de números no es un trece";
 
+    }
   }
 
   /**
@@ -159,30 +148,26 @@ public class Partida {
     boolean valord2 = false;
     boolean valord3 = false;
 
-    if (casillaVacia(player, 2)) {
-      for (int i = 4; i <= 6; i++) {
-
-        if (player.dadosJugador.getD1() == i) {
-          valord1 = true;
-        } else if (player.dadosJugador.getD2() == i) {
-          valord2 = true;
-        } else if (player.dadosJugador.getD3() == i) {
-          valord3 = true;
-        } else {
-          player.p.set(2,0);
-          player.p.set(13, player.totalPtos(2));
-          return "Esta combinación de dados no es una Escalera Mayor";
-        }
-      }
-
-      if (valord1 && valord2 && valord3) {
-        player.p.set(2, 20);
+    for (int i = 4; i <= 6; i++) {
+    
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(2,0);
         player.p.set(13, player.totalPtos(2));
-        return "Esta combinación es una Escalera Mayor, 20 ptos";
+        return "Esta combinación de dados no es una Escalera Mayor";
       }
     }
-
-    return "Casilla ocupada";
+    
+    if (valord1 && valord2 && valord3) {
+      player.p.set(2, 20);
+      player.p.set(13, player.totalPtos(2));
+    }
+    return "Esta combinación es una Escalera Mayor, 20 ptos";
   }
 
   /**
@@ -196,32 +181,27 @@ public class Partida {
     boolean valord2 = false;
     boolean valord3 = false;
 
-    if (casillaVacia(player, 3)) {
+    for (int i = 1; i <= 3; i++) {
 
-      for (int i = 1; i <= 3; i++) {
-
-        if (player.dadosJugador.getD1() == i) {
-          valord1 = true;
-        } else if (player.dadosJugador.getD2() == i) {
-          valord2 = true;
-        } else if (player.dadosJugador.getD3() == i) {
-          valord3 = true;
-        } else {
-          player.p.set(3,0);
-          player.p.set(13, player.totalPtos(3));
-          return "Esta combinación de dados no es una Escalera Menor";
-
-        }
-      }
-
-      if (valord1 && valord2 && valord3) {
-        player.p.set(3, 20);
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(3,0);
         player.p.set(13, player.totalPtos(3));
-        return "Esta combinación es una Escalera Menor, 20 ptos";
+        return "Esta combinación de dados no es una Escalera Menor";
+
       }
     }
-    return "Casilla ocupada";
 
+    if (valord1 && valord2 && valord3) {
+      player.p.set(3, 20);
+      player.p.set(13, player.totalPtos(3));
+    }
+    return "Esta combinación es una Escalera Menor, 20 ptos";
   }
 
   /**
@@ -235,32 +215,26 @@ public class Partida {
     boolean valord2 = false;
     boolean valord3 = false;
 
-    if (casillaVacia(player, 4)) {
+    for (int i = 2; i <= 6; i += 2) {
 
-      for (int i = 2; i <= 6; i += 2) {
-
-        if (player.dadosJugador.getD1() == i) {
-          valord1 = true;
-        } else if (player.dadosJugador.getD2() == i) {
-          valord2 = true;
-        } else if (player.dadosJugador.getD3() == i) {
-          valord3 = true;
-        } else {
-          player.p.set(4,0);
-          player.p.set(13, player.totalPtos(4));
-          return "Esta combinación de dados no es una Escalera Par";
-        }
-
-      }
-      if (valord1 && valord2 && valord3) {
-        player.p.set(4, 20);
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(4,0);
         player.p.set(13, player.totalPtos(4));
-        return "Esta combinación es una Escalera Par, 20 ptos";
+        return "Esta combinación de dados no es una Escalera Par";
       }
 
     }
-
-    return "Casilla ocupada";
+    if (valord1 && valord2 && valord3) {
+      player.p.set(4, 20);
+      player.p.set(13, player.totalPtos(4));
+    }
+    return "Esta combinación es una Escalera Par, 20 ptos";
   }
 
   /**
@@ -274,32 +248,26 @@ public class Partida {
     boolean valord2 = false;
     boolean valord3 = false;
 
-    if (casillaVacia(player, 5)) {
+    for (int i = 2; i <= 6; i += 2) {
 
-      for (int i = 2; i <= 6; i += 2) {
-
-        if (player.dadosJugador.getD1() == i) {
-          valord1 = true;
-        } else if (player.dadosJugador.getD2() == i) {
-          valord2 = true;
-        } else if (player.dadosJugador.getD3() == i) {
-          valord3 = true;
-        } else {
-          player.p.set(5,0);
-          player.p.set(13, player.totalPtos(5));
-          return "Esta combinación de dados no es una escalera impar";
-        }
-
-      }
-      if (valord1 && valord2 && valord3) {
-        player.p.set(5, 20);
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(5,0);
         player.p.set(13, player.totalPtos(5));
-        return "Esta combinación es una escalera impar, 20 ptos";
+        return "Esta combinación de dados no es una escalera impar";
       }
 
     }
-
-    return "Casilla ocupada";
+    if (valord1 && valord2 && valord3) {
+      player.p.set(5, 20);
+      player.p.set(13, player.totalPtos(5));
+    }
+    return "Esta combinación es una escalera impar, 20 ptos";
   }
 
   /**
@@ -309,24 +277,18 @@ public class Partida {
    * @return
    */
   public static String Trio(Jugador player) {
-    if (casillaVacia(player, 6)) {
-      if (player.dadosJugador.getD1() == player.dadosJugador.getD2()
-          && player.dadosJugador.getD1() == player.dadosJugador.getD3()) {
+    if (player.dadosJugador.getD1() == player.dadosJugador.getD2()
+        && player.dadosJugador.getD1() == player.dadosJugador.getD3()) {
 
-        player.p.set(6, 25);
-        player.p.set(13, player.totalPtos(6));
-        return "Casilla Trío completada, 25 ptos";
-      } else {
-        player.p.set(6,0);
-        player.p.set(13, player.totalPtos(6));
-       
-        return "Esta combinación de números no es un trío.";
-      }
-
+      player.p.set(6, 25);
+      player.p.set(13, player.totalPtos(6));
+      return "Casilla Trío completada, 25 ptos";
     } else {
-      return "Casilla ocupada";
+      player.p.set(6,0);
+      player.p.set(13, player.totalPtos(6));
+     
+      return "Esta combinación de números no es un trío.";
     }
-
   }
 
   /**
@@ -365,13 +327,9 @@ public class Partida {
       casilla = 12;
     }
 
-    if (casillaVacia(player, casilla)) {
-      player.p.set(casilla, puntos);
-      player.p.set(13, player.totalPtos(casilla));
-      return "Casilla" + n + "completada con " + n + " ptos";
-    } else {
-      return "Casilla ocupada";
-    }
+    player.p.set(casilla, puntos);
+    player.p.set(13, player.totalPtos(casilla));
+    return "Casilla" + n + "completada con " + n + " ptos";
   }
 
   @Override
