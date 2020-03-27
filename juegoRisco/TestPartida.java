@@ -13,14 +13,12 @@ public class TestPartida {
 
 		int nJugadores;
 
-		boolean ocupada = false;
-		
 		String nombreTmp;
 
 		// Recojo el número de jugadores, y se los paso a Partida
 
 		nJugadores = Teclado.leerEntero("Indica cuantos jugadores sois: ");
-		// Crear una partida ////////
+		// Crear una partida
 		Partida partida = new Partida(nJugadores);
 		for (int i = 1; i <= nJugadores; i++) {
 			nombreTmp = Teclado.leerCadena("Introduce el nombre del jugador " + i + ": ");
@@ -46,143 +44,63 @@ public class TestPartida {
 					int nDadosCambiar = Teclado.leerEntero("¿Cuántos dados quieres cambiar?: ");
 					System.out.println(player.dadosJugador.cambiarDados(nDadosCambiar));
 				}
-				
-				do {
-  				switch (menu.gestionar()) {
-  					case 1:
-  					  if (Partida.casillaVacia(player, 0)) {
-  					    System.out.println(Partida.Risco(player));
-  					    ocupada = false;
-  					  } else {
-  					    ocupada = true;
-  					    System.out.println("Casilla ocupada");
-  					  }
-  						break;
-  					case 2:
-  					  if (Partida.casillaVacia(player, 1)) {
-  						  System.out.println(Partida.Trece(player));
-  						  ocupada = false;
-  					  } else {
-  					    ocupada = true;
-  					    System.out.println("Casilla ocupada");
-  					  }
-  						break;
-  					case 3:
-  					  if (Partida.casillaVacia(player, 2)) {
-  					    System.out.println(Partida.EscaleraMayor(player));
-  					    ocupada = false;
-  					  } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 4:
-  					  if (Partida.casillaVacia(player, 3)) {
-  					    System.out.println(Partida.EscaleraMenor(player));
-  					    ocupada = false;
-  					  } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 5:
-  					  if (Partida.casillaVacia(player, 4)) {
-  					    System.out.println(Partida.EscaleraPar(player));
-  					    ocupada = false;
-  					  } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 6:
-  					  if (Partida.casillaVacia(player, 5)) {
-    						System.out.println(Partida.EscaleraImpar(player));
-    						ocupada = false;
-  					  } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 7:
-  					  if (Partida.casillaVacia(player, 6)) {
-    						System.out.println(Partida.Trio(player));
-    						ocupada = false;
-  					  } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 8:
-  					  if (Partida.casillaVacia(player, 7)) {
-    						Partida.numero(player, 6);
-    						ocupada = false;
-  					  } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 9:
-  					  if (Partida.casillaVacia(player, 8)) {
-                Partida.numero(player, 5);
-                ocupada = false;
-              } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 10:
-  					  if (Partida.casillaVacia(player, 9)) {
-                Partida.numero(player, 4);
-                ocupada = false;
-              } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 11:
-  					  if (Partida.casillaVacia(player, 10)) {
-                Partida.numero(player, 3);
-                ocupada = false;
-              } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 12:
-  					  if (Partida.casillaVacia(player, 11)) {
-                Partida.numero(player, 2);
-                ocupada = false;
-              } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					case 13:
-  					  if (Partida.casillaVacia(player, 12)) {
-                Partida.numero(player, 1);
-                ocupada = false;
-              } else {
-                ocupada = true;
-                System.out.println("Casilla ocupada");
-              }
-  						break;
-  
-  					default:
-  						System.out.println("Opción no valida.");
-  						j--;
-  						break;
-  				}
-				}while(ocupada);
+
+				switch (menu.gestionar()) {
+					case 1:
+						System.out.println(Partida.Risco(player));
+						break;
+					case 2:
+						System.out.println(Partida.Trece(player));
+						break;
+					case 3:
+						System.out.println(Partida.EscaleraMayor(player));
+						break;
+
+					case 4:
+						System.out.println(Partida.EscaleraMenor(player));
+						break;
+
+					case 5:
+						System.out.println(Partida.EscaleraPar(player));
+						break;
+
+					case 6:
+						System.out.println(Partida.EscaleraImpar(player));
+						break;
+
+					case 7:
+						System.out.println(Partida.Trio(player));
+						break;
+
+					case 8:
+						Partida.numero(player, 6);
+						break;
+
+					case 9:
+						Partida.numero(player, 5);
+						break;
+
+					case 10:
+						Partida.numero(player, 4);
+						break;
+
+					case 11:
+						Partida.numero(player, 3);
+						break;
+
+					case 12:
+						Partida.numero(player, 2);
+						break;
+
+					case 13:
+						Partida.numero(player, 1);
+						break;
+
+					default:
+						System.out.println("Opción no valida.");
+						j--;
+						break;
+				}
 				
 				partida.muestraTablero();
         System.out.println();

@@ -56,7 +56,6 @@ public class Dados {
         System.out.println("Solo puedes cambiar 3 dados");
         nDadosCambiar = 3;
       }
-      System.out.println("Continuemos con la partida.");
       setD1();
       setD2();
       setD3();
