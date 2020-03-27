@@ -8,7 +8,7 @@ public class Partida {
   private int ronda;
   private int nJugadores;
 
-  ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+   ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 
   public Partida(int nJugadores) {
     this.nJugadores = nJugadores;
@@ -35,7 +35,7 @@ public class Partida {
   /**
    * Método para crear jugadores para la partida.
    * 
-   * @param nj     (Número de jugadores)
+   * @param nj (Número de jugadores)
    * @param nombre (Nombre del jugador)
    */
   public void crearJugadores(int nj, String nombre) {
@@ -112,7 +112,7 @@ public class Partida {
       player.p.set(13, player.totalPtos(0));
       return "Casilla Risco completada, 50 ptos";
     } else {
-      player.p.set(0, 0);
+      player.p.set(0,0);
       player.p.set(13, player.totalPtos(0));
       return "Esta combinación de números no es un risco";
     }
@@ -130,7 +130,7 @@ public class Partida {
       player.p.set(13, player.totalPtos(1));
       return "Casilla Trece completada, 26 ptos";
     } else {
-      player.p.set(1, 0);
+      player.p.set(1,0);
       player.p.set(13, player.totalPtos(1));
       return "Esta combinación de números no es un trece";
 
@@ -144,19 +144,29 @@ public class Partida {
    * @return
    */
   public static String EscaleraMayor(Jugador player) {
+    boolean valord1 = false;
+    boolean valord2 = false;
+    boolean valord3 = false;
 
     for (int i = 4; i <= 6; i++) {
-
-      if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() == i) {
-        player.p.set(2, 0);
+    
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(2,0);
         player.p.set(13, player.totalPtos(2));
         return "Esta combinación de dados no es una Escalera Mayor";
       }
     }
-
-    player.p.set(2, 20);
-    player.p.set(13, player.totalPtos(2));
-
+    
+    if (valord1 && valord2 && valord3) {
+      player.p.set(2, 20);
+      player.p.set(13, player.totalPtos(2));
+    }
     return "Esta combinación es una Escalera Mayor, 20 ptos";
   }
 
@@ -167,19 +177,30 @@ public class Partida {
    * @return
    */
   public static String EscaleraMenor(Jugador player) {
+    boolean valord1 = false;
+    boolean valord2 = false;
+    boolean valord3 = false;
 
     for (int i = 1; i <= 3; i++) {
 
-      if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() == i) {
-        player.p.set(3, 0);
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(3,0);
         player.p.set(13, player.totalPtos(3));
         return "Esta combinación de dados no es una Escalera Menor";
 
       }
     }
 
-    player.p.set(3, 20);
-    player.p.set(13, player.totalPtos(3));
+    if (valord1 && valord2 && valord3) {
+      player.p.set(3, 20);
+      player.p.set(13, player.totalPtos(3));
+    }
     return "Esta combinación es una Escalera Menor, 20 ptos";
   }
 
@@ -190,18 +211,29 @@ public class Partida {
    * @return
    */
   public static String EscaleraPar(Jugador player) {
+    boolean valord1 = false;
+    boolean valord2 = false;
+    boolean valord3 = false;
+
     for (int i = 2; i <= 6; i += 2) {
 
-      if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() == i) {
-        player.p.set(4, 0);
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(4,0);
         player.p.set(13, player.totalPtos(4));
         return "Esta combinación de dados no es una Escalera Par";
       }
 
     }
-
-    player.p.set(4, 20);
-    player.p.set(13, player.totalPtos(4));
+    if (valord1 && valord2 && valord3) {
+      player.p.set(4, 20);
+      player.p.set(13, player.totalPtos(4));
+    }
     return "Esta combinación es una Escalera Par, 20 ptos";
   }
 
@@ -212,18 +244,29 @@ public class Partida {
    * @return
    */
   public static String EscaleraImpar(Jugador player) {
+    boolean valord1 = false;
+    boolean valord2 = false;
+    boolean valord3 = false;
+
     for (int i = 2; i <= 6; i += 2) {
 
-      if (player.dadosJugador.getD1() != i || player.dadosJugador.getD2() != i || player.dadosJugador.getD3() == i) {
-        player.p.set(5, 0);
+      if (player.dadosJugador.getD1() == i) {
+        valord1 = true;
+      } else if (player.dadosJugador.getD2() == i) {
+        valord2 = true;
+      } else if (player.dadosJugador.getD3() == i) {
+        valord3 = true;
+      } else {
+        player.p.set(5,0);
         player.p.set(13, player.totalPtos(5));
         return "Esta combinación de dados no es una escalera impar";
       }
 
     }
-
-    player.p.set(5, 20);
-    player.p.set(13, player.totalPtos(5));
+    if (valord1 && valord2 && valord3) {
+      player.p.set(5, 20);
+      player.p.set(13, player.totalPtos(5));
+    }
     return "Esta combinación es una escalera impar, 20 ptos";
   }
 
@@ -241,9 +284,9 @@ public class Partida {
       player.p.set(13, player.totalPtos(6));
       return "Casilla Trío completada, 25 ptos";
     } else {
-      player.p.set(6, 0);
+      player.p.set(6,0);
       player.p.set(13, player.totalPtos(6));
-
+     
       return "Esta combinación de números no es un trío.";
     }
   }
@@ -252,7 +295,7 @@ public class Partida {
    * Método de comprobación: Seis, cinco, cuatro, tres, dos, ases.
    * 
    * @param player
-   * @param n      (Número de juego, p. ej 5 en refencia al cinco)
+   * @param n (Número de juego, p. ej 5 en refencia al cinco)
    * @return
    */
   public static String numero(Jugador player, int n) {
