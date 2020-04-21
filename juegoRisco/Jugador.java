@@ -2,6 +2,7 @@
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -106,9 +107,9 @@ public class Jugador {
   private BufferedWriter creaArchivo() {
     BufferedWriter manejadorExp = null;
     try {
-      manejadorExp = new BufferedWriter(new FileWriter(this.nombre + ".txt"));
+      manejadorExp = new BufferedWriter(new FileWriter("risco_" + this.nombre + ".txt", true)); // Con true hace que pueda seguir en un archivo sin "macharlo"
     } catch (Exception e) {
-      System.err.println("Error, no ha sido escribir en datos.txt");
+      System.err.println("Error, no ha sido escribir en risco_" + this.nombre + ".txt");
       System.exit(2);
     }
     return manejadorExp;
@@ -117,46 +118,50 @@ public class Jugador {
   /**
    * Exporta los datos
    */
-  public void guardaDatos()  {
+  public void guardaDatos(int nJugadores, int pos)  {
   
     // Nombre de jugador
     try {
       BufferedWriter archivo = creaArchivo();
-      archivo.write("Nombre de jugador: " + this.nombre);
-    
-    archivo.newLine();
-    archivo.write("---------------------");
-    archivo.newLine();
-    
-    // Dados
-    archivo.write("\nDados actuales de " + this.nombre);
-    archivo.newLine();
-    archivo.write(dadosJugador.toString());
-    archivo.newLine();
-    
-    // Puntuacion
-    archivo.write("\nPuntuación actual de " + this.nombre);
-    archivo.newLine();
-    String[] juegos = {"\nRisco → ", "Trece → ", "E.Mayor → ", "E.Menor → ", "E.Par → ", "E.Impar → ", "Trio → ", "Seis → ", "Cinco → ",
-        "Cuatro → ", "Tres → ", "Dos → ", "As → ", "Total → "};
-    for (int i=0;i<=13;i++) {
-      if (p.get(i) != null) {
-        archivo.write(juegos[i] + p.get(i));
-      } else {
-        archivo.write(juegos[i] + "\t");
+      
+      /*
+       * Estructura fichero:
+       * 
+       * Fecha: 21/04/2020 ; Risco: 2 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 1
+       * Fecha: 22/04/2020 ; Risco: 2 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 2
+       * 
+       */
+      
+      // Fecha
+      java.util.Date fechalarga = new Date();
+      String fecha = new SimpleDateFormat("dd/MM/yyyy").format(fechalarga);
+      archivo.write("Fecha: " + fecha + " ; ");
+      
+      // Puntuacion
+      String[] juegos = {"Risco: ", "Trece:  ", "E.Mayor: ", "E.Menor: ", "E.Par: ", "E.Impar: ", "Trio: ", "Seis: ", "Cinco: ",
+          "Cuatro: ", "Tres: ", "Dos: ", "As: ", "Total: "};
+      for (int i=0;i<=13;i++) {
+        if (p.get(i) != null) {
+          archivo.write(juegos[i] + p.get(i) + " ; ");
+        } else {
+          archivo.write(juegos[i] + "\t ; ");
+        }
       }
-      archivo.newLine();
+      
+      // Número de jugadores
+      archivo.write("Número jugadores: " + nJugadores + " ; ");
+      
+      // Puesto en la partida
+      archivo.write("Puesto: " + pos);
+      
+      // Final (cierre fichero)
+      archivo.newLine(); // Hago una línea nueva, pensando en añadir mas datos en el futuro.
+      archivo.close();
+      System.out.println("Datos exportados.");
+  
+    } catch (IOException e) {
+      System.err.println("Error en la escritura del fichero");
     }
-    
-    // Final
-    java.util.Date fecha = new Date();
-    archivo.write("\nDatos exportados a: " + fecha);
-    archivo.close();
-    System.out.println("Datos exportados.");
-
-  } catch (IOException e) {
-    System.err.println("error en la lectura del fichero");
-      }
   }
   
 

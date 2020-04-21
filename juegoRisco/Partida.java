@@ -249,7 +249,7 @@ public class Partida {
       player.p.set(4, 20);
       player.p.set(13, player.totalPtos(4));
     }
-    return "Esta combinaci�n es una Escalera Par, 20 ptos";
+    return "Esta combinación es una Escalera Par, 20 ptos";
   }
 
   /**
@@ -354,6 +354,29 @@ public class Partida {
     player.p.set(casilla, puntos);
     player.p.set(13, player.totalPtos(casilla));
     return "Casilla" + n + "completada con " + n + " ptos";
+  }
+  
+  /**
+   * Método que calcula la posición de un jugador en la partida
+   * 
+   * Empieza en la primera posición, compara la puntuación del jugador con la de los
+   * demás, si es mayor, incrementa la posición en 1.
+   * 
+   * @param player
+   * @return
+   */
+  int posicion(Jugador player) {
+    int pos = 1;
+    int puntos = player.p.get(13);
+    
+    for (int i = 0; i < nJugadores; i++) {
+      if (jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(13) != null) {
+        if (jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(13) > puntos) {
+          pos++;
+        }
+      }
+    }    
+    return pos;
   }
 
   @Override
