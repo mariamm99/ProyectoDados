@@ -1,5 +1,7 @@
 //package ProyectoDados.juegoRisco;
 import utiles.*;
+
+import java.io.File;
 import java.util.Scanner;
 
 public class TestPartida {
@@ -12,8 +14,10 @@ public class TestPartida {
 	  Scanner sc = new Scanner(System.in);
 
 		int nJugadores;
-
 		String nombreTmp;
+		File archivoTmp; // Representación de un archivo, para ver si existe
+		String esONoEs; // Para aceptar la confirmación de un jugador sobre su persona
+		boolean apto = true;
 
 		// Recojo el número de jugadores, y se los paso a Partida
 
@@ -21,7 +25,18 @@ public class TestPartida {
 		// Crear una partida
 		Partida partida = new Partida(nJugadores);
 		for (int i = 1; i <= nJugadores; i++) {
-			nombreTmp = Teclado.leerCadena("Introduce el nombre del jugador " + i + ": ");
+		  do {
+		    apto = true;
+  			nombreTmp = Teclado.leerCadena("Introduce el nombre del jugador " + i + ": ");
+  			archivoTmp = new File("risco_" + nombreTmp + ".txt");
+  			if (archivoTmp.exists()) {
+  			  System.out.print("\nEste jugador ya ha jugado anteriormente, ¿realmente eres él? [S/N]: ");
+          esONoEs = sc.nextLine().toUpperCase();
+          if (!esONoEs.equals("S")) {
+            apto = false;
+          }
+  			}
+		  } while(!apto);
 			partida.crearJugadores(i, nombreTmp);
 		}
 
@@ -105,9 +120,11 @@ public class TestPartida {
 				partida.muestraTablero();
         System.out.println();
         System.out.print("\nPulsa Intro para seguir o e para exportar tus datos actuales[Intro/e]: ");
+        
         String exporto = sc.nextLine().toUpperCase();
         if (exporto.equals("E")) {
-            player.guardaDatos();
+            int pos = partida.posicion(player);
+            player.guardaDatos(nJugadores, pos);
           }
 			}
 		}
