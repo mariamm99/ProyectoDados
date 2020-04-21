@@ -103,6 +103,9 @@ public class Partida {
    * @return
    */
   public static String Risco(Jugador player) {
+    if (!casillaVacia(player, 0)) {
+      return "Casilla ocupada";
+    }
     if ((player.dadosJugador.getD1() == player.dadosJugador.getD2()
         || player.dadosJugador.getD1() == player.dadosJugador.getD3()
         || player.dadosJugador.getD2() == player.dadosJugador.getD3())
@@ -125,6 +128,9 @@ public class Partida {
    * @return
    */
   public static String Trece(Jugador player) {
+    if (!casillaVacia(player, 1)) {
+      return "Casilla ocupada";
+    }
     if (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13) {
       player.p.set(1, 26);
       player.p.set(13, player.totalPtos(1));
@@ -148,6 +154,9 @@ public class Partida {
     boolean valord2 = false;
     boolean valord3 = false;
 
+    if (!casillaVacia(player, 2)) {
+      return "Casilla ocupada";
+    }
     for (int i = 4; i <= 6; i++) {
     
       if (player.dadosJugador.getD1() == i) {
@@ -180,6 +189,9 @@ public class Partida {
     boolean valord1 = false;
     boolean valord2 = false;
     boolean valord3 = false;
+    if (!casillaVacia(player, 3)) {
+      return "Casilla ocupada";
+    }
 
     for (int i = 1; i <= 3; i++) {
 
@@ -214,6 +226,9 @@ public class Partida {
     boolean valord1 = false;
     boolean valord2 = false;
     boolean valord3 = false;
+    if (!casillaVacia(player, 4)) {
+      return "Casilla ocupada";
+    }
 
     for (int i = 2; i <= 6; i += 2) {
 
@@ -234,7 +249,7 @@ public class Partida {
       player.p.set(4, 20);
       player.p.set(13, player.totalPtos(4));
     }
-    return "Esta combinación es una Escalera Par, 20 ptos";
+    return "Esta combinaciï¿½n es una Escalera Par, 20 ptos";
   }
 
   /**
@@ -248,6 +263,9 @@ public class Partida {
     boolean valord2 = false;
     boolean valord3 = false;
 
+    if (!casillaVacia(player, 5)) {
+      return "Casilla ocupada";
+    }
     for (int i = 2; i <= 6; i += 2) {
 
       if (player.dadosJugador.getD1() == i) {
@@ -277,6 +295,9 @@ public class Partida {
    * @return
    */
   public static String Trio(Jugador player) {
+    if (!casillaVacia(player, 6)) {
+      return "Casilla ocupada";
+    }
     if (player.dadosJugador.getD1() == player.dadosJugador.getD2()
         && player.dadosJugador.getD1() == player.dadosJugador.getD3()) {
 
@@ -325,6 +346,9 @@ public class Partida {
       casilla = 11;
     } else if (n == 1) {
       casilla = 12;
+    }
+    if (!casillaVacia(player, casilla)) {
+      return "Casilla ocupada";
     }
 
     player.p.set(casilla, puntos);
