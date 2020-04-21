@@ -234,7 +234,7 @@ public class Partida {
       player.p.set(4, 20);
       player.p.set(13, player.totalPtos(4));
     }
-    return "Esta combinaciÃ³n es una Escalera Par, 20 ptos";
+    return "Esta combinación es una Escalera Par, 20 ptos";
   }
 
   /**

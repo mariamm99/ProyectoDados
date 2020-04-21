@@ -1,0 +1,26 @@
+Nombre de jugador: m
+---------------------
+
+Dados actuales de m
+Dado 1: 3
+Dado 2: 1
+Dado 3: 5
+
+Puntuación actual de m
+
+Risco → 	
+Trece → 	
+E.Mayor → 	
+E.Menor → 	
+E.Par → 	
+E.Impar → 0
+Trio → 	
+Seis → 	
+Cinco → 	
+Cuatro → 8
+Tres → 	
+Dos → 6
+As → 	
+Total → 14
+
+Datos exportados a: Fri Mar 27 19:19:22 CET 2020

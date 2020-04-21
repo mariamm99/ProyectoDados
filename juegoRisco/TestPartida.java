@@ -1,14 +1,15 @@
-
 //package ProyectoDados.juegoRisco;
 import utiles.*;
+import java.util.Scanner;
 
 public class TestPartida {
 
 	static Menu menu = new Menu("Indique la opción que quiere realizar:",
 			new String[] { "Risco", "Trece", "Escalera Mayor", "Escalera Menor ", "Escalera par", "Escalera impar",
-					"Trio", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases" });
+					"Trio", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases"});
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+	  Scanner sc = new Scanner(System.in);
 
 		int nJugadores;
 
@@ -32,9 +33,9 @@ public class TestPartida {
 			 */
 			for (int j = 1; j <= nJugadores; j++) {
 				Jugador player = partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j)));
-
+		    
 				System.out.print("\n\nTurno " + i + " del jugador "
-						+ partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j))).getNombre());
+						+ partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j ))).getNombre());
 				System.out.println("\nEn esta tirada obtienes:\n"
 						+ Partida.tirarDados(partida.jugadores.get(partida.jugadores.indexOf(new Jugador(j)))));
 
@@ -100,20 +101,17 @@ public class TestPartida {
 						j--;
 						break;
 				}
-
+				
 				partida.muestraTablero();
-				System.out.println();
-
-				String exporto = Teclado
-						.leerCadena("\nPulsa Intro para seguir o e para exportar tus datos actuales[Intro/e]: ")
-						.toUpperCase();
-				if (exporto.equals("E")) {
-
-					player.guardaDatos();
-
-				}
+        System.out.println();
+        System.out.print("\nPulsa Intro para seguir o e para exportar tus datos actuales[Intro/e]: ");
+        String exporto = sc.nextLine().toUpperCase();
+        if (exporto.equals("E")) {
+            player.guardaDatos();
+          }
 			}
 		}
+		sc.close();
 	}
 
 }
