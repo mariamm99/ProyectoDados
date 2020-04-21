@@ -12,7 +12,11 @@ public class Jugador {
   ArrayList<Integer> p = new ArrayList<Integer>(); // ArrayList de puntuaciones
   Dados dadosJugador; // ArrayList de dados ESTO NO ES ARRAYLIST!! es array solo by María
   
-  // Constructor ///////
+  /**
+   * Constructor con los parámetros:
+   * @param nj
+   * @param nombre
+   */
   public Jugador (int nj, String nombre) {
     this.nj = nj; // Número de jugador
     this.nombre = nombre; // Nombre de jugador
@@ -33,43 +37,52 @@ public class Jugador {
     p.add(null); // 13 Para guardar el total
   }
   
+  /**
+   * Constructor con el parámetro:
+   * @param nj
+   */
   public Jugador(int nj) {
     this.nj = nj;
   }
   
-
+/**
+ * Get nombre del jugador
+ * @return nombre
+ */
   public String getNombre() {
     return nombre;
   }
 
+  /**
+   * Set nombre, da el nombre al jugador.
+   * @param nombre
+   */
   public void setNombre(String nombre) {
     this.nombre = nombre;
   }
 
-  public ArrayList<Integer> getP() {
-    return p;
-  }
-
-  public void setP(ArrayList<Integer> p) {
-    this.p = p;
-  }
-  
+  /**
+   * getDadosJugador devuelve el parámetro:
+   * @return Dados del Jugador
+   */
   public Dados getDadosJugador() {
     return dadosJugador;
   }
 
+  /**
+   * @param dadosJugador
+   */
   public void setDadosJugador(Dados dadosJugador) {
     this.dadosJugador = dadosJugador;
   }
 
-  public int getNj() {
-    return nj;
-  }
-
-  public void setNj(int nj) {
-    this.nj = nj;
-  }
+  
   int tmp=0; // Variable que almacena todos los puntos
+
+  /**
+ * Almacena los puntos totales.
+ * @return los puntos totales.
+ */
   public int totalPtos(int i) {
     
     boolean hayPtos = false;
@@ -88,7 +101,6 @@ public class Jugador {
   
   /**
    * Método para crear archivos para la exportación de datos.
-   * 
    * @param nombre
    */
   private BufferedWriter creaArchivo() {
@@ -102,6 +114,9 @@ public class Jugador {
     return manejadorExp;
   }
   
+  /**
+   * Exporta los datos
+   */
   public void guardaDatos()  {
   
     // Nombre de jugador
