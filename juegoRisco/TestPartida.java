@@ -60,55 +60,148 @@ public class TestPartida {
 					System.out.println(player.dadosJugador.cambiarDados(nDadosCambiar));
 				}
 
+				boolean casillaOcupada;
+        do {
+				 casillaOcupada=false;
 				switch (menu.gestionar()) {
 					case 1:
-						System.out.println(Partida.Risco(player));
+					  if (Partida.Risco(player)==0) {
+              System.out.println("ha obtenido 0 puntos");
+            } else if (Partida.Risco(player)==1) {
+              System.out.println("Has completado la casilla Risco: 50 puntos");
+            } else {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            }
 						break;
+					
 					case 2:
-						System.out.println(Partida.Trece(player));
+					  if (Partida.Trece(player)==0) {
+              System.out.println("ha obtenido 0 puntos");
+            } else if (Partida.Trece(player)==1) {
+              System.out.println("Casilla Trece completada: 26 ptos");
+            } else {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            }
 						break;
+						
 					case 3:
-						System.out.println(Partida.EscaleraMayor(player));
+					  if (Partida.EscaleraMayor(player)==0) {
+              System.out.println("ha obtenido 0 puntos");
+            } else if (Partida.EscaleraMayor(player)==1) {
+              System.out.println("Esta combinación es una Escalera Mayor, 20 ptos");
+            } else {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            }
+						
 						break;
 
 					case 4:
-						System.out.println(Partida.EscaleraMenor(player));
+					  if (Partida.EscaleraMenor(player)==0) {
+              System.out.println("ha obtenido 0 puntos");
+            } else if (Partida.EscaleraMenor(player)==1) {
+              System.out.println("Esta combinación es una Escalera Menor, 20 ptos");
+            } else {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            }
 						break;
 
 					case 5:
-						System.out.println(Partida.EscaleraPar(player));
+					  if (Partida.EscaleraPar(player)==0) {
+              System.out.println("ha obtenido 0 puntos");
+            } else if (Partida.EscaleraPar(player)==1) {
+              System.out.println("Esta combinación es una Escalera Par, 20 ptos");
+            } else {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            }
 						break;
 
+						
 					case 6:
-						System.out.println(Partida.EscaleraImpar(player));
+					  if (Partida.EscaleraImpar(player)==0) {
+              System.out.println("ha obtenido 0 puntos");
+            } else if (Partida.EscaleraImpar(player)==1) {
+              System.out.println("Esta combinación es una Escalera Impar, 20 ptos");
+            } else {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            }
+
 						break;
 
 					case 7:
-						System.out.println(Partida.Trio(player));
+					  if (Partida.Trio(player)==0) {
+              System.out.println("ha obtenido 0 puntos");
+            } else if (Partida.Trio(player)==1) {
+              System.out.println("Casilla Trío completada, 25 ptos");
+            } else {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            }
 						break;
 
 					case 8:
-						Partida.numero(player, 6);
+					  if (Partida.numero(player, 6)==50) {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            } else {
+              System.out.println("Casilla seises completada con " + Partida.numero(player, 6));
+            }
 						break;
 
 					case 9:
-						Partida.numero(player, 5);
+					  if (Partida.numero(player, 5)==50) {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            } else {
+              System.out.println("Casilla cincos completada con " + Partida.numero(player, 5));
+              
+            }
+						
 						break;
 
 					case 10:
-						Partida.numero(player, 4);
-						break;
+					  if (Partida.numero(player, 4)==50) {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+            } else {
+              System.out.println("Casilla cuatros completada con " + Partida.numero(player, 4));
+              
+            }
+					  break;
 
 					case 11:
-						Partida.numero(player, 3);
+					  if (Partida.numero(player, 3)==50) {
+					    System.out.println("Casilla ocupada indique una casilla vacia");
+					    casillaOcupada=true;
+            } else {
+              System.out.println("Casilla treses completada con " + Partida.numero(player, 3));
+            }
 						break;
 
 					case 12:
-						Partida.numero(player, 2);
+					  if (Partida.numero(player, 2)==50) {
+					    System.out.println("Casilla ocupada indique una casilla vacia");
+					    casillaOcupada=true;
+            } else {
+              System.out.println("Casilla doses completada con " + Partida.numero(player, 2));
+            }
+						
 						break;
 
 					case 13:
-						Partida.numero(player, 1);
+					  if (Partida.numero(player, 1)==50) {
+              System.out.println("Casilla ocupada indique una casilla vacia");
+              casillaOcupada=true;
+              
+            } else {
+              System.out.println("Casilla Ases completada con " + Partida.numero(player, 1)); 
+            }
+						
 						break;
 
 					default:
@@ -116,6 +209,7 @@ public class TestPartida {
 						j--;
 						break;
 				}
+				}while(casillaOcupada);
 				
 				partida.muestraTablero();
         System.out.println();
