@@ -8,7 +8,7 @@ public class TestPartida {
 
 	static Menu menu = new Menu("Indique la opción que quiere realizar:",
 			new String[] { "Risco", "Trece", "Escalera Mayor", "Escalera Menor ", "Escalera par", "Escalera impar",
-					"Trio", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases"});
+					"Trio", "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases", "Ver mi historial"});
 
 	public static void main(String[] args) throws Exception {
 	  Scanner sc = new Scanner(System.in);
@@ -69,7 +69,7 @@ public class TestPartida {
 				switch (menu.gestionar()) {
 					case 1:
 					  if (Partida.Risco(player)==0) {
-              System.out.println("ha obtenido 0 puntos");
+              System.out.println("Ha obtenido 0 puntos");
             } else if (Partida.Risco(player)==1) {
               System.out.println("Has completado la casilla Risco: 50 puntos");
             } else {
@@ -80,7 +80,7 @@ public class TestPartida {
 					
 					case 2:
 					  if (Partida.Trece(player)==0) {
-              System.out.println("ha obtenido 0 puntos");
+              System.out.println("Ha obtenido 0 puntos");
             } else if (Partida.Trece(player)==1) {
               System.out.println("Casilla Trece completada: 26 ptos");
             } else {
@@ -91,7 +91,7 @@ public class TestPartida {
 						
 					case 3:
 					  if (Partida.EscaleraMayor(player)==0) {
-              System.out.println("ha obtenido 0 puntos");
+              System.out.println("Ha obtenido 0 puntos");
             } else if (Partida.EscaleraMayor(player)==1) {
               System.out.println("Esta combinación es una Escalera Mayor, 20 ptos");
             } else {
@@ -103,7 +103,7 @@ public class TestPartida {
 
 					case 4:
 					  if (Partida.EscaleraMenor(player)==0) {
-              System.out.println("ha obtenido 0 puntos");
+              System.out.println("Ha obtenido 0 puntos");
             } else if (Partida.EscaleraMenor(player)==1) {
               System.out.println("Esta combinación es una Escalera Menor, 20 ptos");
             } else {
@@ -114,7 +114,7 @@ public class TestPartida {
 
 					case 5:
 					  if (Partida.EscaleraPar(player)==0) {
-              System.out.println("ha obtenido 0 puntos");
+              System.out.println("Ha obtenido 0 puntos");
             } else if (Partida.EscaleraPar(player)==1) {
               System.out.println("Esta combinación es una Escalera Par, 20 ptos");
             } else {
@@ -126,7 +126,7 @@ public class TestPartida {
 						
 					case 6:
 					  if (Partida.EscaleraImpar(player)==0) {
-              System.out.println("ha obtenido 0 puntos");
+              System.out.println("Ha obtenido 0 puntos");
             } else if (Partida.EscaleraImpar(player)==1) {
               System.out.println("Esta combinación es una Escalera Impar, 20 ptos");
             } else {
@@ -138,7 +138,7 @@ public class TestPartida {
 
 					case 7:
 					  if (Partida.Trio(player)==0) {
-              System.out.println("ha obtenido 0 puntos");
+              System.out.println("Ha obtenido 0 puntos");
             } else if (Partida.Trio(player)==1) {
               System.out.println("Casilla Trío completada, 25 ptos");
             } else {
@@ -206,12 +206,19 @@ public class TestPartida {
             }
 						
 						break;
+						
+					case 14:
+					  Historial history = new Historial(player);
+					  System.out.println(history);
+					  casillaOcupada = true; // Aunque no era su fin, uso casillaVacia para que no pierda el turno al ver el historial
+					  break;
 
 					default:
 						System.out.println("Opción no valida.");
 						j--;
 						break;
 				}
+				
 				}while(casillaOcupada);
 				
 				partida.muestraTablero();
