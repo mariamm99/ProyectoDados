@@ -52,10 +52,18 @@ public class Historial {
     return numeroPartidas;
   }
 
+  /**
+   * Set Numero de partidas jugadas
+   * @param numeroPartidas
+   */
   private void setNumeroPartidas(int numeroPartidas) {
     this.numeroPartidas = numeroPartidas;
   }
 
+  /**
+   * Calcula la media de los puntos obtenidos en las partidas guardadas en el historial
+   * @return Media de los puntos obtenidos
+   */
   private float getMediaPuntos() {
 
     String texto;
@@ -78,10 +86,18 @@ public class Historial {
     return mediaPuntos;
   }
 
+  /**
+   * Set de la media de Puntos obtenidos
+   * @param mediaPuntos
+   */
   private void setMediaPuntos(float mediaPuntos) {
     this.mediaPuntos = mediaPuntos;
   }
 
+  /**
+   *Calcula las veces que ha quedado primero en las partida registradas
+   * @return PartidasPrimero
+   */
   private int getPartidasPrimero() {
 
     String texto;
@@ -97,10 +113,19 @@ public class Historial {
     return partidasPrimero;
   }
 
+  /**
+   * Set Para las veces que ha quedado primero en una partida
+   * @param partidasPrimero
+   */
   private void setPartidasPrimero(int partidasPrimero) {
     this.partidasPrimero = partidasPrimero;
   }
 
+  /**
+   * Get para puesto medio, utiliza expresión regular para ver los puestos en los que
+   * ha quedado y calcular la media.
+   * @return media de los puestos que ha quedado en las partidas
+   */
   private float getPuestoMedio() {
 
     float veces = 0;
@@ -122,6 +147,10 @@ public class Historial {
     return puestoMedio;
   }
 
+  /**
+   * Set puesto Medio que queda el jugador.
+   * @param puestoMedio
+   */
   private void setPuestoMedio(float puestoMedio) {
     this.puestoMedio = puestoMedio;
   }
@@ -173,6 +202,10 @@ public class Historial {
     }
   }
 
+  /**
+   *  Devuelve toda la información del archivo en un solo parámetro
+   * @return texto 
+   */
   private String texto() {
     String linea = "";
     String texto = "";
