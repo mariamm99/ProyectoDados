@@ -1,12 +1,13 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
- * Historial es una clase para leer los ficheros de exportación de los jugadores.
- * Muestra la Fecha de la partida, las puntuaciones, el número de jugadores que había y 
- * la posición del jugador en cuestión.
+ * Historial es una clase para leer los ficheros de exportación de los
+ * jugadores. Muestra la Fecha de la partida, las puntuaciones, el número de
+ * jugadores que había y la posición del jugador en cuestión.
  * 
  *
  */
@@ -16,15 +17,14 @@ public class Historial {
   private int numeroPartidas; // Número de partidas jugadas (número de líneas)
   private int mediaPuntos; // Suma todos los puntos de todas las partidas
   private int partidasPrimero; // Veces que estaba primero
-  private int puestoMedio; // Media de la posición de todas las partidas
+  private float puestoMedio; // Media de la posición de todas las partidas
   private BufferedReader archivo; // Archivo con el historial
-  
+
   /**
-   * Constructor de la clase Historial.
-   * Se le pasa como parámetro un jugador.
+   * Constructor de la clase Historial. Se le pasa como parámetro un jugador.
    * 
    * @param player
-   * @throws IOException 
+   * @throws IOException
    */
   public Historial(Jugador player) throws IOException {
     this.nombreJugador = player.getNombre();
@@ -39,7 +39,7 @@ public class Historial {
   private String getNombreJugador() {
     return nombreJugador;
   }
-  
+
   private BufferedReader getArchivo() {
     return archivo;
   }
@@ -47,7 +47,7 @@ public class Historial {
   private void setArchivo(BufferedReader archivo) {
     this.archivo = archivo;
   }
-  
+
   private int getNumeroPartidas() {
     return numeroPartidas;
   }
@@ -65,6 +65,25 @@ public class Historial {
   }
 
   private int getPartidasPrimero() {
+    String texto = "";
+    String linea;
+    try {
+
+      while ((linea = archivo.readLine()) != null) {
+        texto += linea + "\n";
+      }
+
+      // Puesto: 1
+      Pattern patron = Pattern.compile("Puesto: 1");
+      Matcher match = patron.matcher(texto);
+      while (match.find()) {
+        partidasPrimero++;
+      }
+
+    } catch (IOException e) {
+      System.err.println("error al abrir el archivo");
+    }
+
     return partidasPrimero;
   }
 
@@ -72,14 +91,35 @@ public class Historial {
     this.partidasPrimero = partidasPrimero;
   }
 
-  private int getPuestoMedio() {
+  private float getPuestoMedio() {
+    String texto = "";
+    String linea;
+    float veces=0;
+    try {
+
+      while ((linea = archivo.readLine()) != null) {
+        texto += linea + "\n";
+      }
+
+      // Puesto: 1
+      Pattern patron = Pattern.compile("Puesto: (.*?)");
+      Matcher match = patron.matcher(texto);
+      while (match.find()) {
+        puestoMedio+= Float.parseFloat(match.group(1));
+        veces++;
+      }
+
+    } catch (IOException e) {
+      System.err.println("error al abrir el archivo");
+    }
+    puestoMedio= puestoMedio/veces;
     return puestoMedio;
   }
 
   private void setPuestoMedio(int puestoMedio) {
     this.puestoMedio = puestoMedio;
   }
-  
+
   /**
    * Método para abrir el fichero del jugador
    * 
@@ -96,10 +136,10 @@ public class Historial {
     }
     return archivo;
   }
-  
+
   /**
-   * Método que cuenta las líneas del archivo, o lo que
-   * es lo mismo, el número de partidas.
+   * Método que cuenta las líneas del archivo, o lo que es lo mismo, el número de
+   * partidas.
    * 
    * @return
    * @throws IOException
@@ -109,13 +149,15 @@ public class Historial {
     while (archivo.readLine() != null) {
       nPartidas++;
     }
-    setArchivo(abrirFichero()); // Vuelvo a abrir el fichero y meterlo en el objeto, porque ahora estará leyendo el final
+    setArchivo(abrirFichero()); // Vuelvo a abrir el fichero y meterlo en el objeto, porque ahora estará leyendo
+                                // el final
     return nPartidas;
   }
-  
+
   /**
    * Método para pruebas, BORRAR cuando ya no sea necesario
-   * @throws IOException 
+   * 
+   * @throws IOException
    */
   void leerFichero() throws IOException {
     String linea = archivo.readLine();
@@ -124,11 +166,12 @@ public class Historial {
       linea = archivo.readLine();
     }
   }
-  
+
   @Override
   public String toString() {
-    return "\nHistorial de " + getNombreJugador() + "\nPartidas hechas → " + getNumeroPartidas() + "\nPuntuación media → " + getMediaPuntos() + "\nPartidas primero → " + getPartidasPrimero() + "\nPuesto medio → " + getPuestoMedio();
+    return "\nHistorial de " + getNombreJugador() + "\nPartidas hechas → " + getNumeroPartidas()
+        + "\nPuntuación media → " + getMediaPuntos() + "\nPartidas primero → " + getPartidasPrimero()
+        + "\nPuesto medio → " + getPuestoMedio();
   }
-  
-  
+
 }

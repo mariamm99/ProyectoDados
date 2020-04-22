@@ -127,8 +127,8 @@ public class Jugador {
       /*
        * Estructura fichero:
        * 
-       * Fecha: 21/04/2020 ; Risco: 2 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 1
-       * Fecha: 22/04/2020 ; Risco: 2 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 2
+       * Fecha: 21/04/2020 ; Risco: 50 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 1
+       * Fecha: 22/04/2020 ; Risco: 50 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 2
        * 
        */
       
@@ -193,6 +193,4 @@ public class Jugador {
     return "Jugador [nombre=" + nombre +  ", dadosJugador=" + dadosJugador + "]";
   }
   
-  
-  
-}
+ }

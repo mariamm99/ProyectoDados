@@ -1,0 +1,1 @@
+Fecha: 22/04/2020 ; Risco: 	 ; Trece:  	 ; E.Mayor: 	 ; E.Menor: 	 ; E.Par: 	 ; E.Impar: 	 ; Trio: 	 ; Seis: 6 ; Cinco: 	 ; Cuatro: 	 ; Tres: 	 ; Dos: 	 ; As: 	 ; Total: 6 ; Número jugadores: 2 ; Puesto: 1
