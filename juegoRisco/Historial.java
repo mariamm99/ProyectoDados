@@ -15,7 +15,7 @@ public class Historial {
   // Atributos ////////
   private String nombreJugador;
   private int numeroPartidas; // Número de partidas jugadas (número de líneas)
-  private int mediaPuntos; // Suma todos los puntos de todas las partidas
+  private float mediaPuntos; // Suma todos los puntos de todas las partidas
   private int partidasPrimero; // Veces que estaba primero
   private float puestoMedio; // Media de la posición de todas las partidas
   private BufferedReader archivo; // Archivo con el historial
@@ -56,32 +56,42 @@ public class Historial {
     this.numeroPartidas = numeroPartidas;
   }
 
-  private int getMediaPuntos() {
+  private float getMediaPuntos() {
+
+    String texto;
+    float veces = 0;
+    texto = texto();
+
+    // Puesto: (matcher.group())
+    Pattern patron = Pattern.compile("Total:(.*?);", Pattern.DOTALL);
+    Matcher matcher = patron.matcher(texto);
+
+    while (matcher.find()) {
+      veces++;
+      System.out.println(matcher.group(1));
+      mediaPuntos += Integer.parseInt(matcher.group(1).trim());
+
+    }
+
+    mediaPuntos = mediaPuntos / veces;
+
     return mediaPuntos;
   }
 
-  private void setMediaPuntos(int mediaPuntos) {
+  private void setMediaPuntos(float mediaPuntos) {
     this.mediaPuntos = mediaPuntos;
   }
 
   private int getPartidasPrimero() {
-    String texto = "";
-    String linea;
-    try {
 
-      while ((linea = archivo.readLine()) != null) {
-        texto += linea + "\n";
-      }
+    String texto;
 
-      // Puesto: 1
-      Pattern patron = Pattern.compile("Puesto: 1");
-      Matcher match = patron.matcher(texto);
-      while (match.find()) {
-        partidasPrimero++;
-      }
-
-    } catch (IOException e) {
-      System.err.println("error al abrir el archivo");
+    texto = texto();
+    // Puesto: 1
+    Pattern patron = Pattern.compile("Puesto: 1");
+    Matcher match = patron.matcher(texto);
+    while (match.find()) {
+      partidasPrimero++;
     }
 
     return partidasPrimero;
@@ -92,31 +102,27 @@ public class Historial {
   }
 
   private float getPuestoMedio() {
-    String texto = "";
-    String linea;
-    float veces=0;
-    try {
 
-      while ((linea = archivo.readLine()) != null) {
-        texto += linea + "\n";
-      }
+    float veces = 0;
 
-      // Puesto: 1
-      Pattern patron = Pattern.compile("Puesto: (.*?)");
-      Matcher match = patron.matcher(texto);
-      while (match.find()) {
-        puestoMedio+= Float.parseFloat(match.group(1));
-        veces++;
-      }
+    String archivo = texto();
 
-    } catch (IOException e) {
-      System.err.println("error al abrir el archivo");
+    // Puesto: (matcher.group())
+    Pattern patron = Pattern.compile("Puesto:\\s+(.*?)\\n", Pattern.DOTALL);
+    Matcher matcher = patron.matcher(archivo);
+
+    while (matcher.find()) {
+      veces++;
+      System.out.println(matcher.group(1));
+      puestoMedio += Integer.parseInt(matcher.group(1));
+
     }
-    puestoMedio= puestoMedio/veces;
+
+    puestoMedio = puestoMedio / veces;
     return puestoMedio;
   }
 
-  private void setPuestoMedio(int puestoMedio) {
+  private void setPuestoMedio(float puestoMedio) {
     this.puestoMedio = puestoMedio;
   }
 
@@ -165,6 +171,20 @@ public class Historial {
       System.out.println(linea);
       linea = archivo.readLine();
     }
+  }
+
+  private String texto() {
+    String linea = "";
+    String texto = "";
+    try {
+      while ((linea = archivo.readLine()) != null) {
+        texto += linea + "\n";
+      }
+    } catch (IOException e) {
+      System.err.println("error al leer el archivo");
+    }
+    setArchivo(abrirFichero());
+    return texto;
   }
 
   @Override
