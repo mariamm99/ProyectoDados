@@ -61,6 +61,9 @@ public class TestPartida {
 				}
 
 				boolean casillaOcupada;
+				/**
+				 * Bucle do while para no perder el turno de la partida si indica una casilla que está ocupada.
+				 */
         do {
 				 casillaOcupada=false;
 				switch (menu.gestionar()) {
