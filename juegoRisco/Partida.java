@@ -8,7 +8,7 @@ public class Partida {
   private int ronda;
   private int nJugadores;
 
-   ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
+  ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
 
   public Partida(int nJugadores) {
     this.nJugadores = nJugadores;
@@ -35,7 +35,7 @@ public class Partida {
   /**
    * Método para crear jugadores para la partida.
    * 
-   * @param nj (Número de jugadores)
+   * @param nj     (Número de jugadores)
    * @param nombre (Nombre del jugador)
    */
   public void crearJugadores(int nj, String nombre) {
@@ -104,7 +104,7 @@ public class Partida {
    */
   public static int Risco(Jugador player) {
     if (!casillaVacia(player, 0)) {
-      //ocupada = 2
+      // ocupada = 50
       return 50;
     }
     if ((player.dadosJugador.getD1() == player.dadosJugador.getD2()
@@ -114,12 +114,12 @@ public class Partida {
 
       player.p.set(0, 50);
       player.p.set(13, player.totalPtos(0));
-      //risco 50 puntos
+      // risco 50 puntos
       return 1;
     } else {
-      player.p.set(0,0);
+      player.p.set(0, 0);
       player.p.set(13, player.totalPtos(0));
-      //Esta combinación de números no es un risco
+      // Esta combinación de números no es un risco
       return 0;
     }
   }
@@ -137,12 +137,12 @@ public class Partida {
     if (player.dadosJugador.getD1() + player.dadosJugador.getD2() + player.dadosJugador.getD3() == 13) {
       player.p.set(1, 26);
       player.p.set(13, player.totalPtos(1));
-      //Casilla Trece completada, 26 ptos
+      // Casilla Trece completada, 26 ptos
       return 1;
     } else {
-      player.p.set(1,0);
+      player.p.set(1, 0);
       player.p.set(13, player.totalPtos(1));
-      //Esta combinación de números no es un trece
+      // Esta combinación de números no es un trece
       return 0;
 
     }
@@ -163,7 +163,7 @@ public class Partida {
       return 50;
     }
     for (int i = 4; i <= 6; i++) {
-    
+
       if (player.dadosJugador.getD1() == i) {
         valord1 = true;
       } else if (player.dadosJugador.getD2() == i) {
@@ -171,18 +171,18 @@ public class Partida {
       } else if (player.dadosJugador.getD3() == i) {
         valord3 = true;
       } else {
-        player.p.set(2,0);
+        player.p.set(2, 0);
         player.p.set(13, player.totalPtos(2));
-        //Esta combinación de dados no es una Escalera Mayor
+        // Esta combinación de dados no es una Escalera Mayor
         return 0;
       }
     }
-    
+
     if (valord1 && valord2 && valord3) {
       player.p.set(2, 20);
       player.p.set(13, player.totalPtos(2));
     }
-    //Esta combinación es una Escalera Mayor, 20 ptos
+    // Esta combinación es una Escalera Mayor, 20 ptos
     return 1;
   }
 
@@ -209,9 +209,9 @@ public class Partida {
       } else if (player.dadosJugador.getD3() == i) {
         valord3 = true;
       } else {
-        player.p.set(3,0);
+        player.p.set(3, 0);
         player.p.set(13, player.totalPtos(3));
-        //"Esta combinación de dados no es una Escalera Menor"
+        // "Esta combinación de dados no es una Escalera Menor"
         return 0;
 
       }
@@ -221,7 +221,7 @@ public class Partida {
       player.p.set(3, 20);
       player.p.set(13, player.totalPtos(3));
     }
-    //"Esta combinación es una Escalera Menor, 20 ptos"
+    // "Esta combinación es una Escalera Menor, 20 ptos"
     return 1;
   }
 
@@ -248,9 +248,9 @@ public class Partida {
       } else if (player.dadosJugador.getD3() == i) {
         valord3 = true;
       } else {
-        player.p.set(4,0);
+        player.p.set(4, 0);
         player.p.set(13, player.totalPtos(4));
-        //no es Escalera Par
+        // no es Escalera Par
         return 0;
       }
 
@@ -259,7 +259,7 @@ public class Partida {
       player.p.set(4, 20);
       player.p.set(13, player.totalPtos(4));
     }
-    //"Esta combinación es una Escalera Par, 20 ptos"
+    // "Esta combinación es una Escalera Par, 20 ptos"
     return 1;
   }
 
@@ -286,18 +286,18 @@ public class Partida {
       } else if (player.dadosJugador.getD3() == i) {
         valord3 = true;
       } else {
-        player.p.set(5,0);
+        player.p.set(5, 0);
         player.p.set(13, player.totalPtos(5));
         return 1;
       }
 
     }
+    //Esta combinación es una escalera impar, 20 ptos
     if (valord1 && valord2 && valord3) {
       player.p.set(5, 20);
       player.p.set(13, player.totalPtos(5));
-    }
-    
-    // "Esta combinación es una escalera impar, 20 ptos"
+     
+    }  
     return 0;
   }
 
@@ -307,7 +307,7 @@ public class Partida {
    * @param player
    * @return
    */
-  public static int  Trio(Jugador player) {
+  public static int Trio(Jugador player) {
     if (!casillaVacia(player, 6)) {
       return 50;
     }
@@ -316,13 +316,12 @@ public class Partida {
 
       player.p.set(6, 25);
       player.p.set(13, player.totalPtos(6));
-      //"Casilla Trío completada, 25 ptos"
+      // "Casilla Trío completada, 25 ptos"
       return 1;
     } else {
-      player.p.set(6,0);
+      player.p.set(6, 0);
       player.p.set(13, player.totalPtos(6));
-      
-      //"Esta combinación de números no es un trío."
+      // "Esta combinación de números no es un trío."
       return 0;
     }
   }
@@ -331,7 +330,7 @@ public class Partida {
    * Método de comprobación: Seis, cinco, cuatro, tres, dos, ases.
    * 
    * @param player
-   * @param n (Número de juego, p. ej 5 en refencia al cinco)
+   * @param n      (Número de juego, p. ej 5 en refencia al cinco)
    * @return
    */
   public static int numero(Jugador player, int n) {
@@ -364,19 +363,19 @@ public class Partida {
     }
     if (!casillaVacia(player, casilla)) {
       return 50;
-    }
-
-    player.p.set(casilla, puntos);
-    player.p.set(13, player.totalPtos(casilla));
-    //"Casilla" + n + "completada con " + n + " ptos"
-    return puntos;
+    } 
+    
+      player.p.set(casilla, puntos);
+      player.p.set(13, player.totalPtos(casilla));
+      // "Casilla" + n + "completada con " + n + " ptos"
+      return puntos;
   }
-  
+
   /**
    * Método que calcula la posición de un jugador en la partida
    * 
-   * Empieza en la primera posición, compara la puntuación del jugador con la de los
-   * demás, si es mayor, incrementa la posición en 1.
+   * Empieza en la primera posición, compara la puntuación del jugador con la de
+   * los demás, si es mayor, incrementa la posición en 1.
    * 
    * @param player
    * @return
@@ -384,14 +383,14 @@ public class Partida {
   int posicion(Jugador player) {
     int pos = 1;
     int puntos = player.p.get(13);
-    
+
     for (int i = 0; i < nJugadores; i++) {
       if (jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(13) != null) {
         if (jugadores.get(jugadores.indexOf(new Jugador(i + 1))).p.get(13) > puntos) {
           pos++;
         }
       }
-    }    
+    }
     return pos;
   }
 

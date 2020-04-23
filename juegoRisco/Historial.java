@@ -138,7 +138,6 @@ public class Historial {
 
     while (matcher.find()) {
       veces++;
-      System.out.println(matcher.group(1));
       puestoMedio += Integer.parseInt(matcher.group(1));
 
     }
@@ -189,18 +188,6 @@ public class Historial {
     return nPartidas;
   }
 
-  /**
-   * Método para pruebas, BORRAR cuando ya no sea necesario
-   * 
-   * @throws IOException
-   */
-  void leerFichero() throws IOException {
-    String linea = archivo.readLine();
-    while (linea != null) {
-      System.out.println(linea);
-      linea = archivo.readLine();
-    }
-  }
 
   /**
    *  Devuelve toda la información del archivo en un solo parámetro
