@@ -8,8 +8,6 @@ import java.util.regex.Pattern;
  * Historial es una clase para leer los ficheros de exportación de los
  * jugadores. Muestra la Fecha de la partida, las puntuaciones, el número de
  * jugadores que había y la posición del jugador en cuestión.
- * 
- *
  */
 public class Historial {
   // Atributos ////////

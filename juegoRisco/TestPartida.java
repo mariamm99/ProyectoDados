@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class TestPartida {
 
-  static Menu menu = new Menu("Indique la opción que quiere realizar:",
+  private static Menu menu = new Menu("Indique la opción que quiere realizar:",
       new String[] { "Risco", "Trece", "Escalera Mayor", "Escalera Menor ", "Escalera par", "Escalera impar", "Trio",
           "Seis", "Cinco", "Cuatro", "Tres", "Dos", "Ases", "Ver mi historial" });
 
