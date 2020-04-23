@@ -1,5 +1,3 @@
-//package ProyectoDados.juegoRisco;
-
 import utiles.Teclado;
 
 /**
