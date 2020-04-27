@@ -5,9 +5,12 @@ import java.io.File;
 import java.util.Scanner;
 
 /**
+ * TestPartida es la clase que interactúa directamente con el usuario.
+ * Aqui se crea una partida nueva y se imprimen por pantalla toda la
+ * información necesaria para el desarrollo de la partida, como las
+ * opciones que tiene el jugador o mostrar el tablero del juego con
+ * las puntuaciones.
  * 
- * 
- *
  */
 public class TestPartida {
 

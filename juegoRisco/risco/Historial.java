@@ -7,8 +7,10 @@ import java.util.regex.Pattern;
 
 /**
  * Historial es una clase para leer los ficheros de exportación de los
- * jugadores. Muestra la Fecha de la partida, las puntuaciones, el número de
+ * jugadores que pueden crearse durante la partida. 
+ * Muestra la Fecha de la partida, las puntuaciones, el número de
  * jugadores que había y la posición del jugador en cuestión.
+ * 
  */
 public class Historial {
   // Atributos ////////
@@ -156,7 +158,7 @@ public class Historial {
   /**
    * Método para abrir el fichero del jugador
    * 
-   * @return
+   * @return el archivo
    */
   private BufferedReader abrirFichero() {
     // Abro el archivo
@@ -174,7 +176,7 @@ public class Historial {
    * Método que cuenta las líneas del archivo, o lo que es lo mismo, el número de
    * partidas.
    * 
-   * @return
+   * @return número de líneas o de partidas
    * @throws IOException
    */
   private int cuentaLineas() throws IOException {
