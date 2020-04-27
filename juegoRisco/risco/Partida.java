@@ -4,8 +4,17 @@ package risco;
 import java.util.ArrayList;
 
 /**
+ * Partida es la clase en la que se encuentran los métodos para todos los "juegos"
+ * que se pueden jugar en el Risco, como el trío, la escalera mayor, etc.
  * 
+ * Se tienen en cuenta la ronda y el número de jugadores que hay en la partida.
  * 
+ * También contiene todos los jugadores de la clase Jugador que están jugando la 
+ * partida.
+ * 
+ * Además, desde aqui se pueden crear nuevos jugadores, tirar unos nuevos dados,
+ * generar el tablero con todas las puntuaciones o calcular cual es la posición 
+ * en la que está el jugador.
  *
  */
 public class Partida {
@@ -52,8 +61,8 @@ public class Partida {
   /**
    * Método estático para que el jugador tire sus dados.
    * 
-   * @param Jugador
-   * @return
+   * @param player
+   * @return los dados del jugador
    */
   public static Dados tirarDados(Jugador player) {
     player.setDadosJugador(new Dados());
@@ -90,7 +99,7 @@ public class Partida {
   /**
    * Método para comprobar si una casilla está vacía o no.
    * 
-   * @param Jugador
+   * @param player
    * @param casilla
    * @return boolean
    */
@@ -106,7 +115,7 @@ public class Partida {
    * Método de comprobación: Risco.
    * 
    * @param player
-   * @return
+   * @return 1 si acierta, 0 si no acierta y 50 si la casilla está ocupada
    */
   public static int Risco(Jugador player) {
     if (!casillaVacia(player, 0)) {
@@ -134,7 +143,7 @@ public class Partida {
    * Método de comprobación: Trece.
    * 
    * @param player
-   * @return
+   * @return 1 si acierta, 0 si no acierta y 50 si la casilla está ocupada
    */
   public static int Trece(Jugador player) {
     if (!casillaVacia(player, 1)) {
@@ -158,7 +167,7 @@ public class Partida {
    * Método de comprobación: Escalera Mayor.
    * 
    * @param player
-   * @return
+   * @return 1 si acierta, 0 si no acierta y 50 si la casilla está ocupada
    */
   public static int EscaleraMayor(Jugador player) {
     boolean valord1 = false;
@@ -183,7 +192,6 @@ public class Partida {
         return 0;
       }
     }
-
     if (valord1 && valord2 && valord3) {
       player.p.set(2, 20);
       player.p.set(13, player.totalPtos(2));
@@ -196,7 +204,7 @@ public class Partida {
    * Método de comprobación: Escalera Menor.
    * 
    * @param player
-   * @return
+   * @return 1 si acierta, 0 si no acierta y 50 si la casilla está ocupada
    */
   public static int EscaleraMenor(Jugador player) {
     boolean valord1 = false;
@@ -235,7 +243,7 @@ public class Partida {
    * Método de comprobación: Escalera Par.
    * 
    * @param player
-   * @return
+   * @return 1 si acierta, 0 si no acierta y 50 si la casilla está ocupada
    */
   public static int EscaleraPar(Jugador player) {
     boolean valord1 = false;
@@ -273,7 +281,7 @@ public class Partida {
    * Método de comprobación: Escalera Impar.
    * 
    * @param player
-   * @return
+   * @return 1 si acierta, 0 si no acierta y 50 si la casilla está ocupada
    */
   public static int EscaleraImpar(Jugador player) {
     boolean valord1 = false;
@@ -311,7 +319,7 @@ public class Partida {
    * Método de comprobación: Trío.
    * 
    * @param player
-   * @return
+   * @return 1 si acierta, 0 si no acierta y 50 si la casilla está ocupada
    */
   public static int Trio(Jugador player) {
     if (!casillaVacia(player, 6)) {
@@ -337,7 +345,7 @@ public class Partida {
    * 
    * @param player
    * @param n      (Número de juego, p. ej 5 en refencia al cinco)
-   * @return
+   * @return cantidad de puntos o 50 si la casilla está ocupada
    */
   public static int numero(Jugador player, int n) {
     int puntos = 0;
@@ -384,7 +392,7 @@ public class Partida {
    * los demás, si es mayor, incrementa la posición en 1.
    * 
    * @param player
-   * @return
+   * @return posición del jugador
    */
   int posicion(Jugador player) {
     int pos = 1;

@@ -2,9 +2,10 @@ package risco;
 import utiles.Teclado;
 
 /**
- * Método dados. Encargado de generar los dados de la partida de forma aleatoria de 1 al 6.
- * Muestra el resultado de los 3 dados. 
- * Además, permite cambiar el resultado de los dados que quiera el jugador.
+ * Clase dados. Encargado de generar los dados de la partida de forma aleatoria de 1 al 6.
+ * Contiene el resultado de los 3 dados. 
+ * Además, permite cambiar los dados, en caso de que el jugador así lo quiera.
+ * 
  */
 public class Dados {
 
@@ -32,7 +33,7 @@ public class Dados {
 
   /**
    * Set dado 1
-   * da valor al dado 1 mediante un generador aleatorio de 1 a 6
+   * Da valor al dado 1 mediante un generador aleatorio de 1 a 6
    */
   public void setD1() {
     this.d1 = (int) (Math.random() * 6 + 1);
@@ -48,7 +49,7 @@ public class Dados {
   
   /**
    * Set dado 2
-   * da valor al dado 2 mediante un generador aleatorio de 1 a 6
+   * Da valor al dado 2 mediante un generador aleatorio de 1 a 6
    */
   public void setD2() {
     this.d2 = (int) (Math.random() * 6 + 1);
@@ -64,17 +65,17 @@ public class Dados {
 
   /**
    * Set dado 2
-   * da valor al dado 2 mediante un generador aleatorio de 1 a 6
+   * Da valor al dado 2 mediante un generador aleatorio de 1 a 6
    */
   public void setD3() {
     this.d3 = (int) (Math.random() * 6 + 1);
   }
 
   /**
-   * Cambiar dados. al tirar los dados puedes solicitar cambiar 1, 2 o los 3 dados.
+   * Cambiar dados. Al tirar los dados puedes solicitar cambiar 1, 2 o los 3 dados.
    * 
    * @param nDadosCambiar
-   * @return
+   * @return dados
    */
   String cambiarDados(int nDadosCambiar) {
 /**
@@ -128,7 +129,7 @@ public class Dados {
   }
 
   /**
-   * @return el valor de los dados
+   * @return el valor de los tres dados
    */
   @Override
   public String toString() {

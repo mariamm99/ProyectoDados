@@ -9,7 +9,7 @@ public class Teclado {
     /**
      * Lectura de entero
      * @param mensaje
-     * @return
+     * @return entero
      * @throws InputMismatchException
      */
     public static int leerEntero(final String mensaje) throws InputMismatchException {
@@ -29,7 +29,7 @@ public class Teclado {
     /**
      * Lectura de Cadena
      * @param mensaje
-     * @return
+     * @return cadena
      */
     public static String leerCadena(final String mensaje) {
 
@@ -42,7 +42,7 @@ public class Teclado {
     /**
      * Lectura de Float
      * @param mensaje
-     * @return
+     * @return decimal
      * @throws InputMismatchException
      */
     public float leerFloat(final String mensaje) throws InputMismatchException {
