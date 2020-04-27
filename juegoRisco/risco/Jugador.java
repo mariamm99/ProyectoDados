@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Método Jugador crea el jugador con los datos de cada jugador: nombre, numero de jugador, 
+ * La clase Jugador crea el jugador con los datos de cada jugador: nombre, numero de jugador, 
  * arraylist con las puntuaciones y el resultado de los dados del jugador.
  * 
  * Además de la información del jugador, en esta clase creamos el método encargado de exportar los datos
