@@ -1,4 +1,5 @@
-//package ProyectoDados.juegoRisco;
+package risco;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,12 +7,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+/**
+ * Método Jugador. Crea el jugador con los datos de cada jugador: nombre, numero de jugador, 
+ * arraylist con las puntuaciones y el resultado de los dados del jugador.
+ *
+ */
 public class Jugador {
-  // Atributos ///////
   private String nombre;
   private int nj; // Número de Jugador, como si fuera un código
   ArrayList<Integer> p = new ArrayList<Integer>(); // ArrayList de puntuaciones
-  Dados dadosJugador; // ArrayList de dados ESTO NO ES ARRAYLIST!! es array solo by María
+  Dados dadosJugador; 
   
   /**
    * Constructor con los parámetros:
@@ -117,6 +122,9 @@ public class Jugador {
   
   /**
    * Exporta los datos
+   * Estructura fichero:
+   *     Fecha: 21/04/2020 ; Risco: 50 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 1
+   *     Fecha: 22/04/2020 ; Risco: 50 ; Trece: 20 ; E.Mayor: 0 ; ... Total: 807 ; Número jugadores: 2 ; Puesto: 2   
    */
   public void guardaDatos(int nJugadores, int pos)  {
   
@@ -125,11 +133,7 @@ public class Jugador {
       BufferedWriter archivo = creaArchivo();
       
       /*
-       * Estructura fichero:
-       * 
-       * Fecha: 21/04/2020 ; Risco: 50 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 1
-       * Fecha: 22/04/2020 ; Risco: 50 ; Trece: 20 ; E.Mayor: 10 ; ... Total: 817 ; Número jugadores: 2 ; Puesto: 2
-       * 
+   
        */
       
       // Fecha

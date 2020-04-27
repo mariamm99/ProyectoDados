@@ -1,7 +1,13 @@
-//package ProyectoDados.juegoRisco;
+package risco;
+
 
 import java.util.ArrayList;
 
+/**
+ * 
+ * 
+ *
+ */
 public class Partida {
 
   // Atributos

@@ -1,10 +1,14 @@
+package risco;
 
-//package ProyectoDados.juegoRisco;
 import utiles.*;
-
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * 
+ * 
+ *
+ */
 public class TestPartida {
 
   private static Menu menu = new Menu("Indique la opción que quiere realizar:",
